@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C941D7C0937006DB877 /* AppDelegate.swift */; };
+		AF339C971D7C0937006DB877 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* FirstViewController.swift */; };
+		AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* SecondViewController.swift */; };
+		AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9A1D7C0937006DB877 /* Main.storyboard */; };
+		AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9D1D7C0937006DB877 /* Assets.xcassets */; };
+		AF339CA11D7C0937006DB877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */; };
+		AF339CAC1D7C0937006DB877 /* Fastaval_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */; };
+		AF339CB71D7C0937006DB877 /* Fastaval_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CB61D7C0937006DB877 /* Fastaval_AppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF339CA81D7C0937006DB877 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF339C891D7C0937006DB877 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF339C901D7C0937006DB877;
+			remoteInfo = "Fastaval App";
+		};
+		AF339CB31D7C0937006DB877 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF339C891D7C0937006DB877 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF339C901D7C0937006DB877;
+			remoteInfo = "Fastaval App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF339C911D7C0937006DB877 /* Fastaval App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fastaval App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF339C941D7C0937006DB877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF339C961D7C0937006DB877 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		AF339C981D7C0937006DB877 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AF339C9B1D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF339C9D1D7C0937006DB877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF339CA01D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF339CA21D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF339CA71D7C0937006DB877 /* Fastaval AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fastaval AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastaval_AppTests.swift; sourceTree = "<group>"; };
+		AF339CAD1D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF339CB21D7C0937006DB877 /* Fastaval AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fastaval AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF339CB61D7C0937006DB877 /* Fastaval_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastaval_AppUITests.swift; sourceTree = "<group>"; };
+		AF339CB81D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF339C8E1D7C0937006DB877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CA41D7C0937006DB877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CAF1D7C0937006DB877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF339C881D7C0937006DB877 = {
+			isa = PBXGroup;
+			children = (
+				AF339C931D7C0937006DB877 /* Fastaval App */,
+				AF339CAA1D7C0937006DB877 /* Fastaval AppTests */,
+				AF339CB51D7C0937006DB877 /* Fastaval AppUITests */,
+				AF339C921D7C0937006DB877 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF339C921D7C0937006DB877 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF339C911D7C0937006DB877 /* Fastaval App.app */,
+				AF339CA71D7C0937006DB877 /* Fastaval AppTests.xctest */,
+				AF339CB21D7C0937006DB877 /* Fastaval AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF339C931D7C0937006DB877 /* Fastaval App */ = {
+			isa = PBXGroup;
+			children = (
+				AF339C941D7C0937006DB877 /* AppDelegate.swift */,
+				AF339C961D7C0937006DB877 /* FirstViewController.swift */,
+				AF339C981D7C0937006DB877 /* SecondViewController.swift */,
+				AF339C9A1D7C0937006DB877 /* Main.storyboard */,
+				AF339C9D1D7C0937006DB877 /* Assets.xcassets */,
+				AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */,
+				AF339CA21D7C0937006DB877 /* Info.plist */,
+			);
+			path = "Fastaval App";
+			sourceTree = "<group>";
+		};
+		AF339CAA1D7C0937006DB877 /* Fastaval AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */,
+				AF339CAD1D7C0937006DB877 /* Info.plist */,
+			);
+			path = "Fastaval AppTests";
+			sourceTree = "<group>";
+		};
+		AF339CB51D7C0937006DB877 /* Fastaval AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF339CB61D7C0937006DB877 /* Fastaval_AppUITests.swift */,
+				AF339CB81D7C0937006DB877 /* Info.plist */,
+			);
+			path = "Fastaval AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF339C901D7C0937006DB877 /* Fastaval App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF339CBB1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval App" */;
+			buildPhases = (
+				AF339C8D1D7C0937006DB877 /* Sources */,
+				AF339C8E1D7C0937006DB877 /* Frameworks */,
+				AF339C8F1D7C0937006DB877 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fastaval App";
+			productName = "Fastaval App";
+			productReference = AF339C911D7C0937006DB877 /* Fastaval App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF339CA61D7C0937006DB877 /* Fastaval AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF339CBE1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppTests" */;
+			buildPhases = (
+				AF339CA31D7C0937006DB877 /* Sources */,
+				AF339CA41D7C0937006DB877 /* Frameworks */,
+				AF339CA51D7C0937006DB877 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF339CA91D7C0937006DB877 /* PBXTargetDependency */,
+			);
+			name = "Fastaval AppTests";
+			productName = "Fastaval AppTests";
+			productReference = AF339CA71D7C0937006DB877 /* Fastaval AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF339CB11D7C0937006DB877 /* Fastaval AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF339CC11D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppUITests" */;
+			buildPhases = (
+				AF339CAE1D7C0937006DB877 /* Sources */,
+				AF339CAF1D7C0937006DB877 /* Frameworks */,
+				AF339CB01D7C0937006DB877 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF339CB41D7C0937006DB877 /* PBXTargetDependency */,
+			);
+			name = "Fastaval AppUITests";
+			productName = "Fastaval AppUITests";
+			productReference = AF339CB21D7C0937006DB877 /* Fastaval AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF339C891D7C0937006DB877 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Fastaval;
+				TargetAttributes = {
+					AF339C901D7C0937006DB877 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					AF339CA61D7C0937006DB877 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = AF339C901D7C0937006DB877;
+					};
+					AF339CB11D7C0937006DB877 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = AF339C901D7C0937006DB877;
+					};
+				};
+			};
+			buildConfigurationList = AF339C8C1D7C0937006DB877 /* Build configuration list for PBXProject "Fastaval App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF339C881D7C0937006DB877;
+			productRefGroup = AF339C921D7C0937006DB877 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF339C901D7C0937006DB877 /* Fastaval App */,
+				AF339CA61D7C0937006DB877 /* Fastaval AppTests */,
+				AF339CB11D7C0937006DB877 /* Fastaval AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF339C8F1D7C0937006DB877 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF339CA11D7C0937006DB877 /* LaunchScreen.storyboard in Resources */,
+				AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */,
+				AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CA51D7C0937006DB877 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CB01D7C0937006DB877 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF339C8D1D7C0937006DB877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */,
+				AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */,
+				AF339C971D7C0937006DB877 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CA31D7C0937006DB877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF339CAC1D7C0937006DB877 /* Fastaval_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF339CAE1D7C0937006DB877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF339CB71D7C0937006DB877 /* Fastaval_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF339CA91D7C0937006DB877 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF339C901D7C0937006DB877 /* Fastaval App */;
+			targetProxy = AF339CA81D7C0937006DB877 /* PBXContainerItemProxy */;
+		};
+		AF339CB41D7C0937006DB877 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF339C901D7C0937006DB877 /* Fastaval App */;
+			targetProxy = AF339CB31D7C0937006DB877 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AF339C9A1D7C0937006DB877 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF339C9B1D7C0937006DB877 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF339CA01D7C0937006DB877 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF339CB91D7C0937006DB877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF339CBA1D7C0937006DB877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF339CBC1D7C0937006DB877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Fastaval App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AF339CBD1D7C0937006DB877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Fastaval App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AF339CBF1D7C0937006DB877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fastaval App.app/Fastaval App";
+			};
+			name = Debug;
+		};
+		AF339CC01D7C0937006DB877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fastaval App.app/Fastaval App";
+			};
+			name = Release;
+		};
+		AF339CC21D7C0937006DB877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Fastaval App";
+			};
+			name = Debug;
+		};
+		AF339CC31D7C0937006DB877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Fastaval App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF339C8C1D7C0937006DB877 /* Build configuration list for PBXProject "Fastaval App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF339CB91D7C0937006DB877 /* Debug */,
+				AF339CBA1D7C0937006DB877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF339CBB1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF339CBC1D7C0937006DB877 /* Debug */,
+				AF339CBD1D7C0937006DB877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AF339CBE1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF339CBF1D7C0937006DB877 /* Debug */,
+				AF339CC01D7C0937006DB877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AF339CC11D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF339CC21D7C0937006DB877 /* Debug */,
+				AF339CC31D7C0937006DB877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF339C891D7C0937006DB877 /* Project object */;
+}
