@@ -7,14 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EFC70D605239DD4D27D2C78 /* Pods_Fastaval_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */; };
+		86F3964D38B7F226D265B473 /* Pods_Fastaval_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */; };
+		9C42FA6C53B5CC1F8BEB7B39 /* Pods_Fastaval_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */; };
 		AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C941D7C0937006DB877 /* AppDelegate.swift */; };
-		AF339C971D7C0937006DB877 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* FirstViewController.swift */; };
+		AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* HomeViewController.swift */; };
 		AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* SecondViewController.swift */; };
 		AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9A1D7C0937006DB877 /* Main.storyboard */; };
 		AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9D1D7C0937006DB877 /* Assets.xcassets */; };
 		AF339CA11D7C0937006DB877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */; };
-		AF339CAC1D7C0937006DB877 /* Fastaval_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */; };
 		AF339CB71D7C0937006DB877 /* Fastaval_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CB61D7C0937006DB877 /* Fastaval_AppUITests.swift */; };
+		AF339CCC1D7C9700006DB877 /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CCB1D7C9700006DB877 /* Broadcaster.swift */; };
+		AF339CCE1D7DE30D006DB877 /* ContainerPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CCD1D7DE30D006DB877 /* ContainerPlaceholder.swift */; };
+		AF339CD11D7DF9F2006DB877 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CD01D7DF9F2006DB877 /* Subscriber.swift */; };
+		AF339CD31D7DFA99006DB877 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CD21D7DFA99006DB877 /* Message.swift */; };
+		AF339CD51D7DFB31006DB877 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CD41D7DFB31006DB877 /* Publisher.swift */; };
+		AF339CD71D83496F006DB877 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339CD61D83496F006DB877 /* LoginViewController.swift */; };
+		AF3D44551DA0EBBF0078BE03 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D44541DA0EBBF0078BE03 /* Directory.swift */; };
+		AF3D44571DA144980078BE03 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D44561DA144980078BE03 /* Stateful.swift */; };
+		AF3D44591DA145330078BE03 /* ParticipantState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D44581DA145330078BE03 /* ParticipantState.swift */; };
+		AF3D445B1DA14AF40078BE03 /* NewsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D445A1DA14AF40078BE03 /* NewsState.swift */; };
+		AF9672FB1DA2C3F1006AD5E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */; };
+		AFA578D91D83517000163E96 /* AppMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578D81D83517000163E96 /* AppMessages.swift */; };
+		AFA578DF1D8450EF00163E96 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578DE1D8450EF00163E96 /* TabBarController.swift */; };
+		AFA578E11D84835C00163E96 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578E01D84835C00163E96 /* Tabs.swift */; };
+		AFA578EC1D85660800163E96 /* WidgetIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578EB1D85660800163E96 /* WidgetIdentifiers.swift */; };
+		AFA578F41D856A1B00163E96 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F31D856A1B00163E96 /* Participant.swift */; };
+		AFA578F61D856A4B00163E96 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F51D856A4B00163E96 /* Proxy.swift */; };
+		AFA578F81D8575D700163E96 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F71D8575D700163E96 /* News.swift */; };
+		AFA579091D9853CB00163E96 /* InfosysApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA579081D9853CB00163E96 /* InfosysApi.swift */; };
+		AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5790A1D98541500163E96 /* JsonApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +57,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.debug.xcconfig"; sourceTree = "<group>"; };
+		6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.release.xcconfig"; sourceTree = "<group>"; };
+		8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339C911D7C0937006DB877 /* Fastaval App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fastaval App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339C941D7C0937006DB877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF339C961D7C0937006DB877 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		AF339C961D7C0937006DB877 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AF339C981D7C0937006DB877 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AF339C9B1D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF339C9D1D7C0937006DB877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF339CA01D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF339CA21D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF339CA71D7C0937006DB877 /* Fastaval AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fastaval AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastaval_AppTests.swift; sourceTree = "<group>"; };
 		AF339CAD1D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF339CB21D7C0937006DB877 /* Fastaval AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fastaval AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339CB61D7C0937006DB877 /* Fastaval_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastaval_AppUITests.swift; sourceTree = "<group>"; };
 		AF339CB81D7C0937006DB877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF339CCB1D7C9700006DB877 /* Broadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcaster.swift; sourceTree = "<group>"; };
+		AF339CCD1D7DE30D006DB877 /* ContainerPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerPlaceholder.swift; sourceTree = "<group>"; };
+		AF339CD01D7DF9F2006DB877 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		AF339CD21D7DFA99006DB877 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AF339CD41D7DFB31006DB877 /* Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		AF339CD61D83496F006DB877 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AF3D44541DA0EBBF0078BE03 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
+		AF3D44561DA144980078BE03 /* Stateful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
+		AF3D44581DA145330078BE03 /* ParticipantState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantState.swift; sourceTree = "<group>"; };
+		AF3D445A1DA14AF40078BE03 /* NewsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsState.swift; sourceTree = "<group>"; };
+		AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AFA578D81D83517000163E96 /* AppMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMessages.swift; sourceTree = "<group>"; };
+		AFA578DE1D8450EF00163E96 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AFA578E01D84835C00163E96 /* Tabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		AFA578EB1D85660800163E96 /* WidgetIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetIdentifiers.swift; sourceTree = "<group>"; };
+		AFA578F31D856A1B00163E96 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
+		AFA578F51D856A4B00163E96 /* Proxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
+		AFA578F71D8575D700163E96 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		AFA579081D9853CB00163E96 /* InfosysApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosysApi.swift; sourceTree = "<group>"; };
+		AFA5790A1D98541500163E96 /* JsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonApi.swift; sourceTree = "<group>"; };
+		DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F3964D38B7F226D265B473 /* Pods_Fastaval_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C42FA6C53B5CC1F8BEB7B39 /* Pods_Fastaval_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +122,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EFC70D605239DD4D27D2C78 /* Pods_Fastaval_AppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A47C9260208853527F39085 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */,
+				6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */,
+				1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */,
+				F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */,
+				EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */,
+				6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AF339C881D7C0937006DB877 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +149,8 @@
 				AF339CAA1D7C0937006DB877 /* Fastaval AppTests */,
 				AF339CB51D7C0937006DB877 /* Fastaval AppUITests */,
 				AF339C921D7C0937006DB877 /* Products */,
+				2A47C9260208853527F39085 /* Pods */,
+				BF118CC9E384D18EBFD8E38F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +167,11 @@
 		AF339C931D7C0937006DB877 /* Fastaval App */ = {
 			isa = PBXGroup;
 			children = (
+				AF339CC61D7C13FC006DB877 /* Framework */,
+				AF339CCF1D7DF951006DB877 /* Protocols */,
+				AF339CC41D7C0950006DB877 /* Views */,
+				AF339CC51D7C13B6006DB877 /* Models */,
 				AF339C941D7C0937006DB877 /* AppDelegate.swift */,
-				AF339C961D7C0937006DB877 /* FirstViewController.swift */,
-				AF339C981D7C0937006DB877 /* SecondViewController.swift */,
 				AF339C9A1D7C0937006DB877 /* Main.storyboard */,
 				AF339C9D1D7C0937006DB877 /* Assets.xcassets */,
 				AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */,
@@ -113,7 +183,6 @@
 		AF339CAA1D7C0937006DB877 /* Fastaval AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				AF339CAB1D7C0937006DB877 /* Fastaval_AppTests.swift */,
 				AF339CAD1D7C0937006DB877 /* Info.plist */,
 			);
 			path = "Fastaval AppTests";
@@ -128,6 +197,66 @@
 			path = "Fastaval AppUITests";
 			sourceTree = "<group>";
 		};
+		AF339CC41D7C0950006DB877 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF339C961D7C0937006DB877 /* HomeViewController.swift */,
+				AF339C981D7C0937006DB877 /* SecondViewController.swift */,
+				AF339CCD1D7DE30D006DB877 /* ContainerPlaceholder.swift */,
+				AF339CD61D83496F006DB877 /* LoginViewController.swift */,
+				AFA578DE1D8450EF00163E96 /* TabBarController.swift */,
+				AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AF339CC51D7C13B6006DB877 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFA578F31D856A1B00163E96 /* Participant.swift */,
+				AFA578F71D8575D700163E96 /* News.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AF339CC61D7C13FC006DB877 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				AFA579081D9853CB00163E96 /* InfosysApi.swift */,
+				AF339CCB1D7C9700006DB877 /* Broadcaster.swift */,
+				AFA578D81D83517000163E96 /* AppMessages.swift */,
+				AFA578E01D84835C00163E96 /* Tabs.swift */,
+				AFA578EB1D85660800163E96 /* WidgetIdentifiers.swift */,
+				AF3D44541DA0EBBF0078BE03 /* Directory.swift */,
+				AF3D44581DA145330078BE03 /* ParticipantState.swift */,
+				AF3D445A1DA14AF40078BE03 /* NewsState.swift */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		AF339CCF1D7DF951006DB877 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AF339CD01D7DF9F2006DB877 /* Subscriber.swift */,
+				AF339CD21D7DFA99006DB877 /* Message.swift */,
+				AF339CD41D7DFB31006DB877 /* Publisher.swift */,
+				AFA578F51D856A4B00163E96 /* Proxy.swift */,
+				AFA5790A1D98541500163E96 /* JsonApi.swift */,
+				AF3D44561DA144980078BE03 /* Stateful.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		BF118CC9E384D18EBFD8E38F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */,
+				F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */,
+				DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +264,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CBB1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval App" */;
 			buildPhases = (
+				CD866E14FC8C12D014F66322 /* [CP] Check Pods Manifest.lock */,
 				AF339C8D1D7C0937006DB877 /* Sources */,
 				AF339C8E1D7C0937006DB877 /* Frameworks */,
 				AF339C8F1D7C0937006DB877 /* Resources */,
+				C6DEB8123684C706ED613716 /* [CP] Embed Pods Frameworks */,
+				104F0D0251792164816CF083 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CBE1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppTests" */;
 			buildPhases = (
+				231DE7105EDBA0F7D1FFCFDC /* [CP] Check Pods Manifest.lock */,
 				AF339CA31D7C0937006DB877 /* Sources */,
 				AF339CA41D7C0937006DB877 /* Frameworks */,
 				AF339CA51D7C0937006DB877 /* Resources */,
+				73C3D74B5DFA9EA35479C3A7 /* [CP] Embed Pods Frameworks */,
+				D4AD4E6D02801E8951EF7583 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CC11D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppUITests" */;
 			buildPhases = (
+				03DFA0A88A25EA36785A2359 /* [CP] Check Pods Manifest.lock */,
 				AF339CAE1D7C0937006DB877 /* Sources */,
 				AF339CAF1D7C0937006DB877 /* Frameworks */,
 				AF339CB01D7C0937006DB877 /* Resources */,
+				391981EF8483615A99E810A6 /* [CP] Embed Pods Frameworks */,
+				30525FA11AD87F23725A930D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,13 +334,16 @@
 				TargetAttributes = {
 					AF339C901D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					AF339CA61D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = AF339C901D7C0937006DB877;
 					};
 					AF339CB11D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = AF339C901D7C0937006DB877;
 					};
 				};
@@ -254,14 +395,172 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03DFA0A88A25EA36785A2359 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		104F0D0251792164816CF083 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		231DE7105EDBA0F7D1FFCFDC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		30525FA11AD87F23725A930D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		391981EF8483615A99E810A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73C3D74B5DFA9EA35479C3A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6DEB8123684C706ED613716 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD866E14FC8C12D014F66322 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D4AD4E6D02801E8951EF7583 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AF339C8D1D7C0937006DB877 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */,
+				AF3D44571DA144980078BE03 /* Stateful.swift in Sources */,
 				AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */,
-				AF339C971D7C0937006DB877 /* FirstViewController.swift in Sources */,
+				AF339CD31D7DFA99006DB877 /* Message.swift in Sources */,
+				AFA578EC1D85660800163E96 /* WidgetIdentifiers.swift in Sources */,
+				AFA578F61D856A4B00163E96 /* Proxy.swift in Sources */,
+				AF9672FB1DA2C3F1006AD5E1 /* MapViewController.swift in Sources */,
+				AF339CD51D7DFB31006DB877 /* Publisher.swift in Sources */,
+				AFA578F41D856A1B00163E96 /* Participant.swift in Sources */,
+				AFA579091D9853CB00163E96 /* InfosysApi.swift in Sources */,
+				AF3D445B1DA14AF40078BE03 /* NewsState.swift in Sources */,
+				AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */,
+				AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */,
+				AFA578E11D84835C00163E96 /* Tabs.swift in Sources */,
+				AF339CCC1D7C9700006DB877 /* Broadcaster.swift in Sources */,
+				AF339CCE1D7DE30D006DB877 /* ContainerPlaceholder.swift in Sources */,
+				AFA578D91D83517000163E96 /* AppMessages.swift in Sources */,
+				AFA578DF1D8450EF00163E96 /* TabBarController.swift in Sources */,
+				AFA578F81D8575D700163E96 /* News.swift in Sources */,
+				AF339CD11D7DF9F2006DB877 /* Subscriber.swift in Sources */,
+				AF339CD71D83496F006DB877 /* LoginViewController.swift in Sources */,
+				AF3D44551DA0EBBF0078BE03 /* Directory.swift in Sources */,
+				AF3D44591DA145330078BE03 /* ParticipantState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +568,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF339CAC1D7C0937006DB877 /* Fastaval_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,68 +701,80 @@
 		};
 		AF339CBC1D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		AF339CBD1D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		AF339CBF1D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fastaval App.app/Fastaval App";
 			};
 			name = Debug;
 		};
 		AF339CC01D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fastaval App.app/Fastaval App";
 			};
 			name = Release;
 		};
 		AF339CC21D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Fastaval App";
 			};
 			name = Debug;
 		};
 		AF339CC31D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Fastaval App";
 			};
 			name = Release;
@@ -488,6 +798,7 @@
 				AF339CBD1D7C0937006DB877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF339CBE1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +807,7 @@
 				AF339CC01D7C0937006DB877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF339CC11D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +816,7 @@
 				AF339CC31D7C0937006DB877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
