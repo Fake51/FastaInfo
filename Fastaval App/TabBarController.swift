@@ -19,7 +19,7 @@ class TabBarController: UITabBarController, Subscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.disableTabs()
+        self.updateTabs()
         
         let broadcaster = Broadcaster.sharedInstance
         _ = broadcaster.subscribe(self, messageKey: AppMessages.MapType, subScriberId: self.getSubscriberId())
@@ -27,44 +27,59 @@ class TabBarController: UITabBarController, Subscriber {
             .subscribe(self, messageKey: AppMessages.UserType, subScriberId: self.getSubscriberId())
     }
     
-    func disableTabs() {
-        
-        for i in [Tabs.barcode.rawValue, Tabs.map.rawValue, Tabs.program.rawValue, Tabs.myFastaval.rawValue] {
-            self.setIconState(i, state: false)
+    func updateTabs() {
+        setMapState()
+        setBarcodeState()
+        setMyFastavalState()
+        setProgramState()        
+    }
+
+    private func setBarcodeState() {
+        setIconState(Tabs.barcode.rawValue, state: false)
+    }
+    
+    private func setProgramState() {
+        setIconState(Tabs.program.rawValue, state: false)
+    }
+
+    private func setMyFastavalState() {
+        if let participant = Directory.sharedInstance.getParticipant() {
+            switch participant.getState() {
+            case ParticipantState.loggedInCheckedIn, ParticipantState.loggedInNotCheckedIn:
+                setIconState(Tabs.myFastaval.rawValue, state: true)
+                break
+                
+
+            default:
+                setIconState(Tabs.myFastaval.rawValue, state: false)
+            }
         }
-        
+
     }
     
     func setIconState(_ index: Int, state: Bool) {
-        if let tabBarItems = self.tabBar.items as AnyObject as? NSArray {
+        if let tabBarItems = self.tabBar.items {
             if let tabBarItem = tabBarItems[index] as? UITabBarItem {
                 tabBarItem.isEnabled = state
             }
-            
-        }
-    }
-
-    func receive(_ message: Message) {
-        switch message {
-        case AppMessages.user:
-            self.setIconState(Tabs.myFastaval.rawValue, state: true)
-            self.setIconState(Tabs.barcode.rawValue, state: true)
-            break
-        default:
-            break
         }
         
     }
-    
-    /*
-    func checkForProgramData(days: [String: ProgramDay]) -> Void {
-        if days.count > 0 {
-            let enable : dispatch_block_t = { [weak self] in
-                self?.setIconState(3, state: true)
+
+    fileprivate func setMapState() {
+        if let map = Directory.sharedInstance.getMap() {
+            switch map.getState() {
+            case FvMapState.notReady:
+                setIconState(Tabs.map.rawValue, state: false)
+                break
+                
+            case FvMapState.ready:
+                setIconState(Tabs.map.rawValue, state: true)
             }
-            
-            dispatch_async(dispatch_get_main_queue(), enable)
         }
     }
-*/
+    
+    func receive(_ message: Message) {
+        updateTabs()
+    }
 }

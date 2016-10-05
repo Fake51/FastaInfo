@@ -47,7 +47,7 @@ class Broadcaster : Publisher {
         return self
     }
     
-    fileprivate func publish(_ message: Message) {
+    func publish(message: Message) {
         if let listeners = subscribers[message.messageKey()] {
             for (_, subscriber) in listeners {
                 

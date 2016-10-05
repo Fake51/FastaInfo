@@ -7,20 +7,9 @@ target 'Fastaval App' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 
   # Pods for Fastaval App
-  pod 'Kingfisher', '~> 3.0'
   pod 'RealmSwift'
   pod 'SwiftyJSON'
-
-
-  target 'Fastaval AppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'Fastaval AppUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod 'Just'
 
 end
 

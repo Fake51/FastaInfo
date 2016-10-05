@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7EFC70D605239DD4D27D2C78 /* Pods_Fastaval_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */; };
-		86F3964D38B7F226D265B473 /* Pods_Fastaval_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */; };
-		9C42FA6C53B5CC1F8BEB7B39 /* Pods_Fastaval_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */; };
+		AB690A3D45F36A189575695A /* Pods_Fastaval_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */; };
 		AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C941D7C0937006DB877 /* AppDelegate.swift */; };
 		AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* HomeViewController.swift */; };
 		AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* SecondViewController.swift */; };
@@ -27,6 +25,8 @@
 		AF3D44571DA144980078BE03 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D44561DA144980078BE03 /* Stateful.swift */; };
 		AF3D44591DA145330078BE03 /* ParticipantState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D44581DA145330078BE03 /* ParticipantState.swift */; };
 		AF3D445B1DA14AF40078BE03 /* NewsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D445A1DA14AF40078BE03 /* NewsState.swift */; };
+		AF8312201DA2DCCA002B52DE /* FvMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83121F1DA2DCCA002B52DE /* FvMap.swift */; };
+		AF8312221DA2DD0C002B52DE /* FvMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8312211DA2DD0C002B52DE /* FvMapState.swift */; };
 		AF9672FB1DA2C3F1006AD5E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */; };
 		AFA578D91D83517000163E96 /* AppMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578D81D83517000163E96 /* AppMessages.swift */; };
 		AFA578DF1D8450EF00163E96 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578DE1D8450EF00163E96 /* TabBarController.swift */; };
@@ -57,11 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.debug.xcconfig"; sourceTree = "<group>"; };
-		6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.release.xcconfig"; sourceTree = "<group>"; };
-		8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44106CA0B7793F6209FE2B9F /* Pods_Fastaval_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		574EE61068AE574ABC4CD1C0 /* Pods_Fastaval_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BAD04B303C5BB3162FC3D9 /* Pods-Fastaval App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.release.xcconfig"; sourceTree = "<group>"; };
 		AF339C911D7C0937006DB877 /* Fastaval App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fastaval App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339C941D7C0937006DB877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF339C961D7C0937006DB877 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +83,8 @@
 		AF3D44561DA144980078BE03 /* Stateful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
 		AF3D44581DA145330078BE03 /* ParticipantState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantState.swift; sourceTree = "<group>"; };
 		AF3D445A1DA14AF40078BE03 /* NewsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsState.swift; sourceTree = "<group>"; };
+		AF83121F1DA2DCCA002B52DE /* FvMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMap.swift; sourceTree = "<group>"; };
+		AF8312211DA2DD0C002B52DE /* FvMapState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMapState.swift; sourceTree = "<group>"; };
 		AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AFA578D81D83517000163E96 /* AppMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMessages.swift; sourceTree = "<group>"; };
 		AFA578DE1D8450EF00163E96 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -95,10 +95,8 @@
 		AFA578F71D8575D700163E96 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		AFA579081D9853CB00163E96 /* InfosysApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosysApi.swift; sourceTree = "<group>"; };
 		AFA5790A1D98541500163E96 /* JsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonApi.swift; sourceTree = "<group>"; };
-		DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC207661F08024E22878899 /* Pods-Fastaval App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86F3964D38B7F226D265B473 /* Pods_Fastaval_App.framework in Frameworks */,
+				AB690A3D45F36A189575695A /* Pods_Fastaval_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C42FA6C53B5CC1F8BEB7B39 /* Pods_Fastaval_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,22 +119,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EFC70D605239DD4D27D2C78 /* Pods_Fastaval_AppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A47C9260208853527F39085 /* Pods */ = {
+		00EE10E84A6EFB5EA165D415 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */,
-				6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */,
-				1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */,
-				F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */,
-				EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */,
-				6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */,
+				BFC207661F08024E22878899 /* Pods-Fastaval App.debug.xcconfig */,
+				A4BAD04B303C5BB3162FC3D9 /* Pods-Fastaval App.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -149,8 +141,8 @@
 				AF339CAA1D7C0937006DB877 /* Fastaval AppTests */,
 				AF339CB51D7C0937006DB877 /* Fastaval AppUITests */,
 				AF339C921D7C0937006DB877 /* Products */,
-				2A47C9260208853527F39085 /* Pods */,
-				BF118CC9E384D18EBFD8E38F /* Frameworks */,
+				00EE10E84A6EFB5EA165D415 /* Pods */,
+				BC86F75FAD0EB262352AF922 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,8 +205,9 @@
 		AF339CC51D7C13B6006DB877 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AFA578F31D856A1B00163E96 /* Participant.swift */,
 				AFA578F71D8575D700163E96 /* News.swift */,
+				AFA578F31D856A1B00163E96 /* Participant.swift */,
+				AF83121F1DA2DCCA002B52DE /* FvMap.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -230,6 +223,7 @@
 				AF3D44541DA0EBBF0078BE03 /* Directory.swift */,
 				AF3D44581DA145330078BE03 /* ParticipantState.swift */,
 				AF3D445A1DA14AF40078BE03 /* NewsState.swift */,
+				AF8312211DA2DD0C002B52DE /* FvMapState.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -247,12 +241,12 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		BF118CC9E384D18EBFD8E38F /* Frameworks */ = {
+		BC86F75FAD0EB262352AF922 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8706421434C15CEA9361C2C4 /* Pods_Fastaval_App.framework */,
-				F15645E0A1A651BAC33E853B /* Pods_Fastaval_AppTests.framework */,
-				DE7B1A1BE6057E5366BB0DA3 /* Pods_Fastaval_AppUITests.framework */,
+				B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */,
+				574EE61068AE574ABC4CD1C0 /* Pods_Fastaval_AppTests.framework */,
+				44106CA0B7793F6209FE2B9F /* Pods_Fastaval_AppUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,12 +258,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CBB1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval App" */;
 			buildPhases = (
-				CD866E14FC8C12D014F66322 /* [CP] Check Pods Manifest.lock */,
+				0B909DD57D01C43C6579776B /* [CP] Check Pods Manifest.lock */,
 				AF339C8D1D7C0937006DB877 /* Sources */,
 				AF339C8E1D7C0937006DB877 /* Frameworks */,
 				AF339C8F1D7C0937006DB877 /* Resources */,
-				C6DEB8123684C706ED613716 /* [CP] Embed Pods Frameworks */,
-				104F0D0251792164816CF083 /* [CP] Copy Pods Resources */,
+				A0A20A19EDF1F53B9378C38C /* [CP] Embed Pods Frameworks */,
+				9C59CA7E370722D5BB34129D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,12 +278,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CBE1D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppTests" */;
 			buildPhases = (
-				231DE7105EDBA0F7D1FFCFDC /* [CP] Check Pods Manifest.lock */,
 				AF339CA31D7C0937006DB877 /* Sources */,
 				AF339CA41D7C0937006DB877 /* Frameworks */,
 				AF339CA51D7C0937006DB877 /* Resources */,
-				73C3D74B5DFA9EA35479C3A7 /* [CP] Embed Pods Frameworks */,
-				D4AD4E6D02801E8951EF7583 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -305,12 +296,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF339CC11D7C0937006DB877 /* Build configuration list for PBXNativeTarget "Fastaval AppUITests" */;
 			buildPhases = (
-				03DFA0A88A25EA36785A2359 /* [CP] Check Pods Manifest.lock */,
 				AF339CAE1D7C0937006DB877 /* Sources */,
 				AF339CAF1D7C0937006DB877 /* Frameworks */,
 				AF339CB01D7C0937006DB877 /* Resources */,
-				391981EF8483615A99E810A6 /* [CP] Embed Pods Frameworks */,
-				30525FA11AD87F23725A930D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -329,7 +317,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Fastaval;
 				TargetAttributes = {
 					AF339C901D7C0937006DB877 = {
@@ -396,7 +384,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03DFA0A88A25EA36785A2359 /* [CP] Check Pods Manifest.lock */ = {
+		0B909DD57D01C43C6579776B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,7 +399,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		104F0D0251792164816CF083 /* [CP] Copy Pods Resources */ = {
+		9C59CA7E370722D5BB34129D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -426,67 +414,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		231DE7105EDBA0F7D1FFCFDC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		30525FA11AD87F23725A930D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		391981EF8483615A99E810A6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppUITests/Pods-Fastaval AppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		73C3D74B5DFA9EA35479C3A7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6DEB8123684C706ED613716 /* [CP] Embed Pods Frameworks */ = {
+		A0A20A19EDF1F53B9378C38C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -501,36 +429,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD866E14FC8C12D014F66322 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D4AD4E6D02801E8951EF7583 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastaval AppTests/Pods-Fastaval AppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -538,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8312201DA2DCCA002B52DE /* FvMap.swift in Sources */,
 				AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */,
 				AF3D44571DA144980078BE03 /* Stateful.swift in Sources */,
 				AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */,
@@ -552,6 +451,7 @@
 				AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */,
 				AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */,
 				AFA578E11D84835C00163E96 /* Tabs.swift in Sources */,
+				AF8312221DA2DD0C002B52DE /* FvMapState.swift in Sources */,
 				AF339CCC1D7C9700006DB877 /* Broadcaster.swift in Sources */,
 				AF339CCE1D7DE30D006DB877 /* ContainerPlaceholder.swift in Sources */,
 				AFA578D91D83517000163E96 /* AppMessages.swift in Sources */,
@@ -628,8 +528,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -674,8 +576,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -694,6 +598,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -701,8 +606,9 @@
 		};
 		AF339CBC1D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BD28E9661B130B4E52BB40E /* Pods-Fastaval App.debug.xcconfig */;
+			baseConfigurationReference = BFC207661F08024E22878899 /* Pods-Fastaval App.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -714,8 +620,9 @@
 		};
 		AF339CBD1D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CE6749ABE2A46390591EF38 /* Pods-Fastaval App.release.xcconfig */;
+			baseConfigurationReference = A4BAD04B303C5BB3162FC3D9 /* Pods-Fastaval App.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -727,7 +634,6 @@
 		};
 		AF339CBF1D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A58B7FD55835623E6309718 /* Pods-Fastaval AppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
@@ -741,7 +647,6 @@
 		};
 		AF339CC01D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5B62FE88DD83E06991116B0 /* Pods-Fastaval AppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Fastaval AppTests/Info.plist";
@@ -755,7 +660,6 @@
 		};
 		AF339CC21D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBEA25629B10A1236AE7141B /* Pods-Fastaval AppUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -768,7 +672,6 @@
 		};
 		AF339CC31D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AA351154F0895F470F06F78 /* Pods-Fastaval AppUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Fastaval AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

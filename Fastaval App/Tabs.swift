@@ -8,8 +8,8 @@
 
 enum Tabs : Int {
     case home = 0
-    case map = 1
-    case barcode = 2
+    case map = 2
+    case barcode = 1
     case program = 3
     case myFastaval = 4
 }

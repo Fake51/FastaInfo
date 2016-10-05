@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         _ = directory.setParticipant(Participant(infosysApi: api))
             .setNews(News(infosysApi: api))
-        
+            .setMap(FvMap())
+
         return true
     }
 

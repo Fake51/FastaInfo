@@ -1,5 +1,5 @@
 PODS:
-  - Kingfisher (3.1.1)
+  - Just (0.5.3)
   - Realm (2.0.1):
     - Realm/Headers (= 2.0.1)
   - Realm/Headers (2.0.1)
@@ -8,16 +8,16 @@ PODS:
   - SwiftyJSON (3.1.0)
 
 DEPENDENCIES:
-  - Kingfisher (~> 3.0)
+  - Just
   - RealmSwift
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Kingfisher: 12b755ae697cc9f0fd3e550db8417fa1233e09ab
+  Just: b597e06120991fd48ad7c03321cf09a27e20d8ab
   Realm: 0557ee0e4ab4f0936c90e370056d1ed6265f93d6
   RealmSwift: 64e00af79bdcd7d2a7a23fdc1cb3faf22b80ae4c
   SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
 
-PODFILE CHECKSUM: d47acd01bdde5d3635d0f73326aa38d0c26346b6
+PODFILE CHECKSUM: a65833b6c573c39b6eabab2492761aca30dff4a7
 
 COCOAPODS: 1.1.0.rc.2

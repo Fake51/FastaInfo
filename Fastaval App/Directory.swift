@@ -15,6 +15,8 @@ class Directory {
 
     fileprivate var news : News?
     
+    fileprivate var map : FvMap?
+    
     fileprivate init() {
         
     }
@@ -31,6 +33,12 @@ class Directory {
         return self
     }
 
+    func setMap(_ map : FvMap) -> Directory {
+        self.map = map
+        
+        return self
+    }
+    
     func getParticipant() -> Participant? {
         if let p = self.participant {
             return p
@@ -47,4 +55,12 @@ class Directory {
         return nil
     }
 
+    func getMap() -> FvMap? {
+        if let map = self.map {
+            return map
+        }
+        
+        return nil
+    }
+    
 }
