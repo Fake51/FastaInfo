@@ -12,11 +12,7 @@ class HomeViewController: UIViewController, Subscriber {
 
     @IBOutlet weak var upperHomeContainer: UIView!
     
-    @IBOutlet weak var lowerHomeContainer: UIView!
-    
     fileprivate var lastUpperView: UIViewController?
-
-    fileprivate var lastLowerView: UIViewController?
     
     fileprivate var uuid = UUID().uuidString
     
@@ -29,7 +25,6 @@ class HomeViewController: UIViewController, Subscriber {
         // Do any additional setup after loading the view, typically from a nib.
 
         self.setUpperView()
-        self.setLowerView()
     }
 
     func setUpperView() {
@@ -40,14 +35,10 @@ class HomeViewController: UIViewController, Subscriber {
             id = WidgetIdentifiers.Login.rawValue
             break
         
-        case ParticipantState.loggedInCheckedIn:
+        case ParticipantState.loggedInCheckedIn, ParticipantState.loggedInNotCheckedIn:
             id = WidgetIdentifiers.Overview.rawValue
             break;
             
-        case ParticipantState.loggedInNotCheckedIn:
-            id = WidgetIdentifiers.Overview.rawValue
-            break
-        
         case ParticipantState.notReady:
             id = WidgetIdentifiers.Placeholder.rawValue
             break
@@ -57,23 +48,11 @@ class HomeViewController: UIViewController, Subscriber {
         switchUpperView(id)
     }
     
-    func setLowerView() {
-        var id : String
-        
-        switch Directory.sharedInstance.getNews()!.getState() {
-        case NewsState.notReady:
-            id = WidgetIdentifiers.Placeholder.rawValue
-        }
-
-        switchLowerView(id)
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType, subScriberId: uuid)
-            .subscribe(self, messageKey: AppMessages.NewsType, subScriberId: uuid)
+        _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType)
+            .subscribe(self, messageKey: AppMessages.NewsType)
 
     }
     
@@ -85,7 +64,7 @@ class HomeViewController: UIViewController, Subscriber {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.UserType, subScriberId: uuid)
+        _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.UserType)
     }
     
     func switchUpperView(_ view: String) {
@@ -102,22 +81,6 @@ class HomeViewController: UIViewController, Subscriber {
         
         lastUpperView = viewController
     }
-
-    func switchLowerView(_ view: String) {
-        if let _ = lastLowerView {
-            lastLowerView?.willMove(toParentViewController: nil)
-        }
-        
-        let viewController = self.storyboard!.instantiateViewController(withIdentifier: view)
-        
-        addChildViewController(viewController)
-        viewController.view.frame = CGRect(x: 0, y: 0, width: lowerHomeContainer.frame.size.width, height: lowerHomeContainer.frame.size.height);
-        lowerHomeContainer.addSubview(viewController.view)
-        viewController.didMove(toParentViewController: self)
-        
-        lastLowerView = viewController
-    }
-    
     
     func receive(_ message: Message) {
         switch message {
@@ -125,10 +88,6 @@ class HomeViewController: UIViewController, Subscriber {
             setUpperView()
             break
             
-        case AppMessages.news:
-            setLowerView()
-            break
-        
         default:
             break
         }

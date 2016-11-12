@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "84a-nP-UrD"; */
+"84a-nP-UrD.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by SecondViewController";
+
+/* Class = "UILabel"; text = "news go here"; ObjectID = "Nhm-NV-bLV"; */
+"Nhm-NV-bLV.text" = "news go here";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "QM5-fs-ius"; */
+"QM5-fs-ius.title" = "Settings";
+
+/* Class = "UITextField"; placeholder = "Participant ID"; ObjectID = "Qok-yo-rNx"; */
+"Qok-yo-rNx.placeholder" = "Participant ID";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "WhA-rM-z0t"; */
+"WhA-rM-z0t.placeholder" = "Password";
+
+/* Class = "UITabBarItem"; title = "Program"; ObjectID = "ZXR-0G-eah"; */
+"ZXR-0G-eah.title" = "Program";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Home";
+
+/* Class = "UITabBarItem"; title = "Barcode"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Barcode";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "yIw-Qw-29o"; */
+"yIw-Qw-29o.title" = "Map";
+
+/* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "Second View";

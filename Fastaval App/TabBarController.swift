@@ -22,16 +22,16 @@ class TabBarController: UITabBarController, Subscriber {
         self.updateTabs()
         
         let broadcaster = Broadcaster.sharedInstance
-        _ = broadcaster.subscribe(self, messageKey: AppMessages.MapType, subScriberId: self.getSubscriberId())
-            .subscribe(self, messageKey: AppMessages.ProgramType, subScriberId: self.getSubscriberId())
-            .subscribe(self, messageKey: AppMessages.UserType, subScriberId: self.getSubscriberId())
+        _ = broadcaster.subscribe(self, messageKey: AppMessages.MapType)
+            .subscribe(self, messageKey: AppMessages.ProgramType)
+            .subscribe(self, messageKey: AppMessages.UserType)
+            .subscribe(self, messageKey: AppMessages.SettingsType)
     }
     
     func updateTabs() {
         setMapState()
         setBarcodeState()
-        setMyFastavalState()
-        setProgramState()        
+        setProgramState()
     }
 
     private func setBarcodeState() {
@@ -39,22 +39,12 @@ class TabBarController: UITabBarController, Subscriber {
     }
     
     private func setProgramState() {
-        setIconState(Tabs.program.rawValue, state: false)
-    }
-
-    private func setMyFastavalState() {
-        if let participant = Directory.sharedInstance.getParticipant() {
-            switch participant.getState() {
-            case ParticipantState.loggedInCheckedIn, ParticipantState.loggedInNotCheckedIn:
-                setIconState(Tabs.myFastaval.rawValue, state: true)
-                break
-                
-
-            default:
-                setIconState(Tabs.myFastaval.rawValue, state: false)
-            }
+        guard let program = Directory.sharedInstance.getProgram() else {
+            setIconState(Tabs.program.rawValue, state: false)
+            return
         }
-
+        
+        setIconState(Tabs.program.rawValue, state: program.getState() == ProgramState.ready)
     }
     
     func setIconState(_ index: Int, state: Bool) {
@@ -79,7 +69,31 @@ class TabBarController: UITabBarController, Subscriber {
         }
     }
     
+    func updateLanguage() {
+        guard let items = self.tabBar.items else {
+            return
+        }
+        
+        guard let language = Directory.sharedInstance.getAppSettings()?.getLanguage().toString() else {
+            return
+        }
+
+        items[Tabs.home.rawValue].title = Tabs.getTranslationKey(Tabs.home).localized(lang: language)
+        items[Tabs.settings.rawValue].title = Tabs.getTranslationKey(Tabs.settings).localized(lang: language)
+        items[Tabs.map.rawValue].title = Tabs.getTranslationKey(Tabs.map).localized(lang: language)
+        items[Tabs.barcode.rawValue].title = Tabs.getTranslationKey(Tabs.barcode).localized(lang: language)
+        items[Tabs.program.rawValue].title = Tabs.getTranslationKey(Tabs.program).localized(lang: language)
+    }
+    
     func receive(_ message: Message) {
-        updateTabs()
+        switch message {
+        case AppMessages.settings:
+            updateLanguage()
+            
+        case AppMessages.map, AppMessages.program, AppMessages.user:
+            fallthrough
+        default:
+            updateTabs()
+        }
     }
 }

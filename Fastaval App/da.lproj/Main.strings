@@ -1,34 +1,4 @@
 
-// settings
-"Manual" = "Manuelt";
-"5 minutes" = "5. minut";
-"15 minutes" = "15. minut";
-"Hourly" = "Hver time";
-"Daily" = "Dagligt";
-
-"Language" = "Sprog";
-"Update frequency" = "Opdateringsinterval";
-"Notifications" = "Status beskeder";
-
-"Use alarms/notifications" = "Brug alarmer/beskeder";
-"Choose frequency" = "Vælg interval";
-"Interval" = "Interval";
-
-
-// tabbar
-"Program" = "Program";
-"Home" = "Home";
-"Barcode" = "Stregkode";
-"Map" = "Kort";
-"Settings" = "Indstillinger";
-
-
-// program
-"Author(s): " = "Forfatter(e): ";
-
-// logged in controller
-"Log out" = "Log ud";
-
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "84a-nP-UrD"; */
 "84a-nP-UrD.normalTitle" = "Login";
 
@@ -38,7 +8,8 @@
 /* Class = "UILabel"; text = "news go here"; ObjectID = "Nhm-NV-bLV"; */
 "Nhm-NV-bLV.text" = "news go here";
 
-
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "QM5-fs-ius"; */
+"QM5-fs-ius.title" = "Indstillinger";
 
 /* Class = "UITextField"; placeholder = "Participant ID"; ObjectID = "Qok-yo-rNx"; */
 "Qok-yo-rNx.placeholder" = "Deltager ID";
@@ -46,6 +17,17 @@
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "WhA-rM-z0t"; */
 "WhA-rM-z0t.placeholder" = "Kode";
 
+/* Class = "UITabBarItem"; title = "Program"; ObjectID = "ZXR-0G-eah"; */
+"ZXR-0G-eah.title" = "Program";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Home";
+
+/* Class = "UITabBarItem"; title = "Barcode"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Stregkode";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "yIw-Qw-29o"; */
+"yIw-Qw-29o.title" = "Kort";
 
 /* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
 "zEq-FU-wV5.text" = "Second View";

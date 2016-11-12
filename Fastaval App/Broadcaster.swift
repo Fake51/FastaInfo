@@ -12,34 +12,31 @@ class Broadcaster : Publisher {
     
     static let sharedInstance = Broadcaster()
     
-    fileprivate var subscribers = Dictionary<MessageKey, Dictionary<String, Subscriber>>()
+    private var subscribers = Dictionary<MessageKey, Dictionary<String, Subscriber>>()
     
 
-    fileprivate init() {
-        /*
-        NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "testIt:", userInfo: nil, repeats: false)
-*/
+    private init() {
     }
 
-    func subscribe(_ subscriber: Subscriber, messageKey: MessageKey, subScriberId: String) -> Publisher {
+    func subscribe(_ subscriber: Subscriber, messageKey: MessageKey) -> Publisher {
         // implement stuff
-
+        
         if subscribers[messageKey] == nil {
            subscribers[messageKey] = Dictionary<String, Subscriber>()
         }
         
-        subscribers[messageKey]![subScriberId] = subscriber
+        subscribers[messageKey]![subscriber.getSubscriberId()] = subscriber
 
         return self
     }
     
-    func unsubscribe(_ subscriber: Subscriber, messageKey: MessageKey, subScriberId: String) -> Publisher {
+    func unsubscribe(_ subscriber: Subscriber, messageKey: MessageKey) -> Publisher {
         // stuff
         
         if let messageSubscribers = subscribers[messageKey] {
             
-            if messageSubscribers[subScriberId] != nil {
-                subscribers[messageKey]![subScriberId] = nil
+            if messageSubscribers[subscriber.getSubscriberId()] != nil {
+                subscribers[messageKey]![subscriber.getSubscriberId()] = nil
 
             }
         }

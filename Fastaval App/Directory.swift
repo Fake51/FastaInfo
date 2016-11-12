@@ -11,56 +11,44 @@ import Foundation
 class Directory {
     static let sharedInstance = Directory()
 
-    fileprivate var participant : Participant?
-
-    fileprivate var news : News?
+    private var storage = Dictionary<DirectoryItemType, DirectoryItem>()
     
-    fileprivate var map : FvMap?
-    
-    fileprivate init() {
+    private init() {
         
     }
     
-    func setParticipant(_ participant : Participant) -> Directory {
-        self.participant = participant
+    func setItem(_ item : DirectoryItem) -> Directory {
+        self.storage[item.getDirectoryType()] = item
         
         return self
     }
     
-    func setNews(_ news : News) -> Directory {
-        self.news = news
-        
-        return self
-    }
-
-    func setMap(_ map : FvMap) -> Directory {
-        self.map = map
-        
-        return self
+    func getAppSettings() -> AppSettings? {
+        return self.storage[DirectoryItemType.appSettings] as! AppSettings?
     }
     
     func getParticipant() -> Participant? {
-        if let p = self.participant {
-            return p
-        }
-        
-        return nil
+        return self.storage[DirectoryItemType.participant] as! Participant?
     }
 
     func getNews() -> News? {
-        if let n = self.news {
-            return n
-        }
-        
-        return nil
+        return self.storage[DirectoryItemType.news] as! News?
     }
 
     func getMap() -> FvMap? {
-        if let map = self.map {
-            return map
-        }
-        
-        return nil
+        return self.storage[DirectoryItemType.map] as! FvMap?
     }
     
+    func getProgram() -> Program? {
+        return self.storage[DirectoryItemType.program] as! Program?
+    }
+    
+    func getFileLocationProvider() -> FileLocationProvider? {
+        return self.storage[DirectoryItemType.fileLocationProvider] as! FileLocationProvider?
+    }
+    
+    func getBarcode() -> Barcode? {
+        return self.storage[DirectoryItemType.barcode] as! Barcode?
+
+    }
 }

@@ -8,38 +8,80 @@
 
 import UIKit
 import Just
+import RealmSwift
 
-class FvMap : Stateful {
+class FvMap : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
-    fileprivate var state = FvMapState.notReady
-
-    fileprivate let mapUrl = "https://infosys.fastaval.dk/img/location.svg"
-
+    private var state = FvMapState.notReady
     
-    init() {
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        // create a name for your image
-        let fileURL = documentsDirectoryURL.appendingPathComponent("location.svg")
+    private var highlightedRoom : String?
+
+    private let infosysApi : JsonApi
+    
+    private let settings : AppSettings
+
+    private var uuid = UUID().uuidString
+    
+    func getSubscriberId() -> String {
+        return uuid
+    }
+
+    private let locationProvider: FileLocationProvider
+    
+    init(infosysApi: JsonApi, settings: AppSettings, locationProvider: FileLocationProvider) {
+        self.infosysApi = infosysApi
+        self.settings = settings
+        self.locationProvider = locationProvider
         
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
-            Just.get(mapUrl, params:[:]) { (r) in
-                if r.ok {
-                    try! r.content?.write(to: fileURL)
-                    
-                    Broadcaster.sharedInstance.publish(message: AppMessages.map)
-                    self.state = FvMapState.ready
-                }
+    }
+  
+    func receive(_ message: Message) {
+        infosysApi.isUpdatedMapAvailable(lastUpdate: Date()) {(_ updateAvailable: Bool) in
+            if updateAvailable {
+                self.getMap()
                 
             }
-        } else {
+            
+        }
+    
+    }
+    
+    private func getMap() {
+        infosysApi.retrieveMap(location: locationProvider.getMapLocation(), completedHandler:  {
             Broadcaster.sharedInstance.publish(message: AppMessages.map)
+            self.state = FvMapState.ready
+            
+        })
+        
+    }
+    
+    func initialize() {
+        let fileURL = locationProvider.getMapLocation()
+        
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            getMap()
+            
+        } else {
             state = FvMapState.ready
             
         }
         
+        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.RemoteSyncType)
     }
     
     func getState() -> FvMapState {
         return state
+    }
+
+    func setHighlightedRoom(room: String?) {
+        highlightedRoom = room
+    }
+    
+    func getHighlightedRoom() -> String? {
+        return highlightedRoom
+    }
+
+    func getDirectoryType() -> DirectoryItemType {
+        return DirectoryItemType.map
     }
 }

@@ -9,5 +9,8 @@
 import SwiftyJSON
 
 protocol JsonApi {
-    func getParticipantData(_ callback: @escaping (JSON?) -> Void, userId: Int, password: String)
+    func getParticipantData(userId: Int, password: String, _ callback: @escaping (JSON?) -> Void)
+    func getProgramData(_ callback: @escaping (JSON?) -> Void)
+    func retrieveMap(location: URL, completedHandler: @escaping () -> Void)
+    func isUpdatedMapAvailable(lastUpdate: Date, completedHandler: @escaping (_ updateAvailable: Bool) -> ()) -> Void
 }

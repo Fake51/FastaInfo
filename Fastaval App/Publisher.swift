@@ -7,6 +7,6 @@
 //
 
 protocol Publisher {
-    func subscribe(_ subscriber: Subscriber, messageKey: MessageKey, subScriberId: String) -> Publisher
-    func unsubscribe(_ subscriber: Subscriber, messageKey: MessageKey, subScriberId: String) -> Publisher
+    func subscribe(_ subscriber: Subscriber, messageKey: MessageKey) -> Publisher
+    func unsubscribe(_ subscriber: Subscriber, messageKey: MessageKey) -> Publisher
 }

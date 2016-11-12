@@ -6,17 +6,28 @@
 //  Copyright © 2016 Fastaval. All rights reserved.
 //
 
-class News : Stateful {
+class News : Stateful, RemoteDependency, DirectoryItem {
 
-    fileprivate var infosysApi : JsonApi
+    private let infosysApi : JsonApi
 
-    fileprivate var state = NewsState.notReady
+    private var state = NewsState.notReady
     
-    init(infosysApi : JsonApi) {
+    private let settings : AppSettings
+    
+    init(infosysApi : JsonApi, settings: AppSettings) {
         self.infosysApi = infosysApi
+        self.settings = settings
     }
     
     func getState() -> NewsState {
         return state
+    }
+    
+    func initialize() {
+        
+    }
+    
+    func getDirectoryType() -> DirectoryItemType {
+        return DirectoryItemType.news
     }
 }

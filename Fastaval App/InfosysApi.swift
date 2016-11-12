@@ -8,112 +8,73 @@
 
 import UIKit
 import SwiftyJSON
+import Just
 
 class InfosysApi: JsonApi {
 
-    // return activities list
-    /*
-    func getActivities(callback: ([String: ProgramDay]) -> Void) -> Void {
-        let url = NSURL(string: "http://infosys-test.fastaval.dk/api/app/v2/activities/*")
+    fileprivate let mapUrl = "https://infosys.fastaval.dk/img/location.svg"
+    
+    fileprivate let userUrl = "https://infosys2016.fastaval.dk/api/v3/user/:id:/?pass=:pass:"
+    
+    fileprivate let programUrl = "https://infosys2016.fastaval.dk/api/app/v3/activities/*"
+   
+    // get activities list
+    func getProgramData(_ callback: @escaping (JSON?) -> Void) {
+        Just.get(programUrl, params: [:]) { (r) in
+            if (!r.ok) {
+                callback(nil)
 
-        if programDays.count > 0 {
-            callback(programDays)
-            return
-        }
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            if (error == nil) {
-            
-                let json = JSON(data: data!)
-            
-                callback(self.makeActivityData(json))
-            
-            }
-            
-            })
-        task.resume()
-    }
-
-    */ */
-
-    // request and parse user data
-    func getParticipantData(_ callback: @escaping (JSON?) -> Void, userId: Int, password: String) {
-        let url = URL(string:"http://infosys-test.fastaval.dk/api/v3/user/\(userId)?pass=\(password)")
-        
-        let task = URLSession.shared.dataTask(with: url!, completionHandler: {(data: Data?, response: URLResponse?, error: NSError?) -> Void in
-                if (error == nil) {
-                    
-                    callback(JSON(data: data!))
-                    
-                } else {
-                    callback(nil)
-            }
+            } else {
+                callback(JSON.parse(r.text!))
                 
-            } as! (Data?, URLResponse?, Error?) -> Void
-        )
-        
-        task.resume()
-    }
-/*
-    func makeUser(json: JSON) -> FvUser? {
-        var user: FvUser
-
-        if let userId = Int(json["id"].string!) {
-            user = FvUser()
-            user.id = userId
-            user.name = json["name"].string!
+            }
             
-            return user
+        }
+    }
+
+    
+    // request and parse user data
+    func getParticipantData(userId: Int, password: String, _ callback: @escaping (JSON?) -> Void) {
+        let url =  userUrl.replacingOccurrences(of: ":id:", with: String(userId)).replacingOccurrences(of: ":pass:", with: password)
+
+        Just.get(url, params:[:]) { (r) in
+            if !r.ok {
+                callback(nil)
+                
+            } else {
+                callback(JSON.parse(r.text!))
+            }
         }
         
-        return nil
     }
     
-    func makeActivityData(json: JSON) -> [String: ProgramDay] {
-        var days = [String: ProgramDay]()
-        let dayFormatter = NSDateFormatter()
-        dayFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let timeslotFormatter = NSDateFormatter()
-        timeslotFormatter.dateFormat = "HH:mm"
-        
-        for (_, activity):(String, JSON) in json {
-            for (key, activityProp):(String, JSON) in activity {
-                if key == "afviklinger" {
-                    for (_, schedule):(String, JSON) in activityProp {
-                        let timestamp: NSNumber? = schedule["start"].number
-                        let date = NSDate(timeIntervalSince1970: NSTimeInterval(timestamp!))
-                        
-                        let dateString = dayFormatter.stringFromDate(date)
-                        
-                        if days[dateString] == nil {
-                            days[dateString] = ProgramDay(date: dateString)
-                        }
-                        
-                        let day = days[dateString]!
-                        
-                        let slotString = timeslotFormatter.stringFromDate(date)
-                        
-                        let slot = day.getSlotByTime(slotString)
-                        
-                        slot.addEvent(ProgramEvent(type: activity["type"].string!, name: activity["title_en"].string!))
-                    }
-                }
+    func retrieveMap(location: URL, completedHandler: @escaping () -> Void) {
+        Just.get(mapUrl, params:[:]) { (r) in
+            if r.ok {
+                try! r.content?.write(to: location)
+
+                completedHandler()
             }
         }
-        
-        programDays = days
-        
-        return programDays
     }
+    
+    func isUpdatedMapAvailable(lastUpdate: Date, completedHandler: @escaping (_ updateAvailable: Bool) -> Void) {
+        Just.head(mapUrl) {(r) in
+            guard let dateString = r.headers["last-modified"] else {
+                completedHandler(false)
+                return
+            }
 
-
-    class var SharedInstance : InfosysApi {
-        struct Singleton {
-            static let instance = InfosysApi()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, dd LLL yyyy HH:mm:ss zzz"
+            
+            guard let modified = dateFormatter.date(from: dateString) else {
+                completedHandler(false)
+                return
+            }
+            
+            completedHandler(modified.compare(lastUpdate) == ComparisonResult.orderedDescending)
         }
-        
-        return Singleton.instance
     }
- */
+
 }

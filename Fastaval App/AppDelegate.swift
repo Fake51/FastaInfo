@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,17 +18,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let api = InfosysApi()
+        self.executeMigrations()
+
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+
+        self.doAppSetup()
         
-        let directory = Directory.sharedInstance
-
-        _ = directory.setParticipant(Participant(infosysApi: api))
-            .setNews(News(infosysApi: api))
-            .setMap(FvMap())
-
+        
         return true
     }
 
+    func doAppSetup() {
+        let api = InfosysApi()
+        
+        let directory = Directory.sharedInstance
+        let appSettings = AppSettings()
+        let locationProvider = FileLocationProvider()
+        
+        _ = directory.setItem(appSettings)
+            .setItem(Participant(infosysApi: api, settings: appSettings))
+            .setItem(locationProvider)
+            .setItem(News(infosysApi: api, settings: appSettings))
+            .setItem(Program(infosysApi: api, settings: appSettings))
+            .setItem(FvMap(infosysApi: api, settings: appSettings, locationProvider: locationProvider))
+            .setItem(appSettings)
+            .setItem(Barcode(infosysApi: api, settings: appSettings))
+        
+        let _ = UpdateScheduler(appSettings: appSettings)
+        
+        directory.getMap()!.initialize()
+        directory.getNews()!.initialize()
+        directory.getProgram()!.initialize()
+        directory.getParticipant()!.initialize()
+        directory.getBarcode()!.initialize()
+    }
+    
+    func executeMigrations() {
+        let config = Realm.Configuration(
+            schemaVersion: 6,
+            migrationBlock: { migration, oldSchemaVersion in
+
+                if (oldSchemaVersion < 1) {
+                    migration.enumerateObjects(ofType: ParticipantData.className()) {
+                        oldObject, newObject in
+                        newObject!["checkedIn"] = false
+                        newObject!["category"] = ""
+                        newObject!["barcodeId"] = 0
+                    }
+                }
+        })
+        
+        Realm.Configuration.defaultConfiguration = config
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

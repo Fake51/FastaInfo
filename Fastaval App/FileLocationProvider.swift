@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FileLocationProvider {
+class FileLocationProvider : DirectoryItem {
     fileprivate let mapFilename = "location.svg"
     
     func getMapLocation () -> URL {
@@ -17,5 +17,9 @@ class FileLocationProvider {
         // create a name for your image
         return documentsDirectoryURL.appendingPathComponent(mapFilename)
 
+    }
+
+    func getDirectoryType() -> DirectoryItemType {
+        return DirectoryItemType.fileLocationProvider
     }
 }

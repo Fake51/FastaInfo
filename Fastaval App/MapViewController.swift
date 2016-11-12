@@ -13,16 +13,53 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        let pageHtml = "<html><head><style></style>"
-        + "<object type='image/svg+xml' data='location.svg' width='1264' height='1032' border='0'></object>"
-            + "</html>"
+        
+        if let html = generateHtml() {
+            let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            webView.loadHTMLString(html, baseURL: documentsDirectoryURL)
+            
+        }
+        
+    }
+
+    fileprivate func getSvgContent() -> String? {
+        guard let fileUrl = Directory.sharedInstance.getFileLocationProvider()?.getMapLocation() else {
+            return nil
+        }
+        
+        do {
+            let svgContent = try String(contentsOfFile: fileUrl.path)
+            
+            return svgContent
+        } catch {
+            return nil
+        }
+        
+    }
+    
+    fileprivate func generateHtml() -> String? {
+        if let svgContent = getSvgContent() {
+            let pageHtmlStart = "<html><head><style>svg {transform: rotate(90deg)} rect {display: none} path {display: none} "
+            let pageHtmlMiddle = "</style></head><body>"
+            let pageHtmlEnd = "</body></html>"
+            
+            var id_highlight = ""
+            
+            if let room = Directory.sharedInstance.getMap()?.getHighlightedRoom() {
+                id_highlight = "#" + room + " {display: initial} "
+                
+                Directory.sharedInstance.getMap()?.setHighlightedRoom(room: nil)
+            }
+
+            return pageHtmlStart + id_highlight + pageHtmlMiddle + svgContent + pageHtmlEnd
+        }
+        
+        return nil
 
         
-        webView.loadHTMLString(pageHtml, baseURL: documentsDirectoryURL)
     }
 }

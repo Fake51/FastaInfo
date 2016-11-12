@@ -10,6 +10,7 @@ target 'Fastaval App' do
   pod 'RealmSwift'
   pod 'SwiftyJSON'
   pod 'Just'
+  pod 'Eureka', '~> 2.0.0-beta.1'
 
 end
 

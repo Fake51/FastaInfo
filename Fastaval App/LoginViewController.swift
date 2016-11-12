@@ -41,18 +41,14 @@ class LoginViewController : UIViewController,  Subscriber {
 
         var id_number = 0
         var password = ""
-        print(participantFieldId.layer.cornerRadius)
         
-        print(participantFieldId.layer.borderColor)
-            print(participantFieldId.layer.masksToBounds)
-            print(participantFieldId.layer.borderWidth)
-
+        let participant = Directory.sharedInstance.getParticipant()!
         
         if let id = participantFieldId.text {
             if (Int(id) != nil && Int(id)! > 0) {
                 self.markTextfieldValid(participantFieldId)
                 id_number = Int(id)!
-                
+
             } else {
                 self.markTextfieldInvalid(participantFieldId)
             }
@@ -69,8 +65,7 @@ class LoginViewController : UIViewController,  Subscriber {
         }
 
         if id_number > 0 && password.characters.count > 0 {
-        
-//            store.dispatch(Actions.AttemptLogin(id_number, password))
+            participant.attemptLogin(id_number, password)
         }
     }
     
@@ -101,5 +96,17 @@ class LoginViewController : UIViewController,  Subscriber {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.SettingsType)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.SettingsType)
     }
 }
