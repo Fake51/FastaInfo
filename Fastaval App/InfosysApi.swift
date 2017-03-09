@@ -12,12 +12,14 @@ import Just
 
 class InfosysApi: JsonApi {
 
-    fileprivate let mapUrl = "https://infosys.fastaval.dk/img/location.svg"
+    private let mapUrl = "https://infosys.fastaval.dk/img/location.svg"
     
-    fileprivate let userUrl = "https://infosys2016.fastaval.dk/api/v3/user/:id:/?pass=:pass:"
+    private let userUrl = "https://infosys.fastaval.dk/api/v3/user/:id:/?pass=:pass:"
     
-    fileprivate let programUrl = "https://infosys2016.fastaval.dk/api/app/v3/activities/*"
+    private let programUrl = "https://infosys.fastaval.dk/api/app/v3/activities/*"
    
+    private let barcodeUrl = "https://infosys.fastaval.dk/participant/ean8/:id:"
+    
     // get activities list
     func getProgramData(_ callback: @escaping (JSON?) -> Void) {
         Just.get(programUrl, params: [:]) { (r) in
@@ -25,7 +27,7 @@ class InfosysApi: JsonApi {
                 callback(nil)
 
             } else {
-                callback(JSON.parse(r.text!))
+                callback(JSON(parseJSON: r.text!))
                 
             }
             
@@ -34,7 +36,7 @@ class InfosysApi: JsonApi {
 
     
     // request and parse user data
-    func getParticipantData(userId: Int, password: String, _ callback: @escaping (JSON?) -> Void) {
+    func getParticipantData(userId: Int, password: String, _ callback: @escaping (SwiftyJSON.JSON?) -> Void) {
         let url =  userUrl.replacingOccurrences(of: ":id:", with: String(userId)).replacingOccurrences(of: ":pass:", with: password)
 
         Just.get(url, params:[:]) { (r) in
@@ -42,7 +44,7 @@ class InfosysApi: JsonApi {
                 callback(nil)
                 
             } else {
-                callback(JSON.parse(r.text!))
+                callback(SwiftyJSON.JSON(parseJSON: r.text!))
             }
         }
         
@@ -53,6 +55,16 @@ class InfosysApi: JsonApi {
             if r.ok {
                 try! r.content?.write(to: location)
 
+                completedHandler()
+            }
+        }
+    }
+
+    func retrieveBarcode(userId: Int, location: URL, completedHandler: @escaping () -> Void) {
+        Just.get(barcodeUrl.replacingOccurrences(of: ":id", with: String(userId))) { (r) in
+            if r.ok {
+                try! r.content?.write(to: location)
+                
                 completedHandler()
             }
         }

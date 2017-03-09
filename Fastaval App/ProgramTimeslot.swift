@@ -32,7 +32,7 @@ class ProgramTimeslot : Object{
             field = "titleDa"
         }
         
-        return events.sorted(byProperty: field)
+        return events.sorted(byKeyPath: field)
     }
 
     func getSortedPublicEvents(_ language : AppLanguage) -> Results<ProgramEvent> {

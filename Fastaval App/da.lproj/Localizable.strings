@@ -28,6 +28,11 @@
 
 // logged in controller
 "Log out" = "Log ud";
+"Sleep area:" = "Soveområde:";
+"Not sleeping at Fastaval" = "Sover ikke på Fastaval";
+"My Program" = "Mit program";
+"Update" = "Opdatér";
+
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "84a-nP-UrD"; */
 "84a-nP-UrD.normalTitle" = "Login";

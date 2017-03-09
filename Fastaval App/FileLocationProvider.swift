@@ -9,13 +9,22 @@
 import UIKit
 
 class FileLocationProvider : DirectoryItem {
-    fileprivate let mapFilename = "location.svg"
+    private let mapFilename     = "location.svg"
+    private let barcodeFilename = "barcode.png"
     
     func getMapLocation () -> URL {
         let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
         // create a name for your image
         return documentsDirectoryURL.appendingPathComponent(mapFilename)
+
+    }
+    
+    func getBarcodeLocation () -> URL {
+        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        
+        // create a name for your image
+        return documentsDirectoryURL.appendingPathComponent(barcodeFilename)
 
     }
 

@@ -36,13 +36,11 @@ class DetailedEventViewController: UIViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+   
+        self.navigationController?.navigationBar.isHidden = false
+         
         let lang = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
         
         event = Directory.sharedInstance.getProgram()!.getCurrentEvent()
@@ -65,9 +63,13 @@ class DetailedEventViewController: UIViewController {
         scrollViewSize.height = textView.bounds.height + author.bounds.height + 10
         scrollView.contentSize = scrollViewSize
         
-//        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .width, multiplier: textView.bounds.height/textView.bounds.width, constant: 1)
-//        textView.addConstraint(aspectRatioTextViewConstraint)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(segueToMap))
         
+    }
+    
+    dynamic func segueToMap() {
+        self.performSegue(withIdentifier: "EventToMapSegue", sender: self)
+
     }
     
     private func adjustSize(_ view : UITextView) {

@@ -26,6 +26,7 @@ class TabBarController: UITabBarController, Subscriber {
             .subscribe(self, messageKey: AppMessages.ProgramType)
             .subscribe(self, messageKey: AppMessages.UserType)
             .subscribe(self, messageKey: AppMessages.SettingsType)
+            .subscribe(self, messageKey: AppMessages.BarcodeType)
     }
     
     func updateTabs() {
@@ -35,7 +36,12 @@ class TabBarController: UITabBarController, Subscriber {
     }
 
     private func setBarcodeState() {
-        setIconState(Tabs.barcode.rawValue, state: false)
+        guard let barcode = Directory.sharedInstance.getBarcode() else {
+            setIconState(Tabs.barcode.rawValue, state: false)
+            return
+        }
+        
+        setIconState(Tabs.barcode.rawValue, state: barcode.getState() == BarcodeState.ready)
     }
     
     private func setProgramState() {
@@ -90,7 +96,7 @@ class TabBarController: UITabBarController, Subscriber {
         case AppMessages.settings:
             updateLanguage()
             
-        case AppMessages.map, AppMessages.program, AppMessages.user:
+        case AppMessages.map, AppMessages.program, AppMessages.user, AppMessages.barcode:
             fallthrough
         default:
             updateTabs()

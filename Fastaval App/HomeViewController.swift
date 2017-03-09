@@ -24,6 +24,8 @@ class HomeViewController: UIViewController, Subscriber {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
         self.setUpperView()
     }
 
@@ -48,17 +50,19 @@ class HomeViewController: UIViewController, Subscriber {
         switchUpperView(id)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType)
             .subscribe(self, messageKey: AppMessages.NewsType)
 
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,18 +72,24 @@ class HomeViewController: UIViewController, Subscriber {
     }
     
     func switchUpperView(_ view: String) {
-        if let _ = lastUpperView {
-            lastUpperView?.willMove(toParentViewController: nil)
+        if let lastInsert = lastUpperView {
+            (lastInsert as! EmbeddedViewController).setParentViewController(nil)
+            lastInsert.willMove(toParentViewController: nil)
+            lastInsert.view.removeFromSuperview()
+            lastInsert.removeFromParentViewController()
         }
         
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: view)
-        
+
         addChildViewController(viewController)
         viewController.view.frame = CGRect(x: 0, y: 0, width: upperHomeContainer.frame.size.width, height: upperHomeContainer.frame.size.height);
         upperHomeContainer.addSubview(viewController.view)
         viewController.didMove(toParentViewController: self)
         
         lastUpperView = viewController
+        
+        let embeddable = viewController as! EmbeddedViewController
+        embeddable.setParentViewController(self)
     }
     
     func receive(_ message: Message) {

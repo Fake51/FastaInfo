@@ -8,29 +8,34 @@
 
 import UIKit
 import RealmSwift
+import SVGgh
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         self.executeMigrations()
 
+        //clean()
+        
+        self.doAppSetup()
+
+        return true
+    }
+
+    func clean() {
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
         }
-
-        self.doAppSetup()
         
         
-        return true
     }
-
+    
     func doAppSetup() {
         let api = InfosysApi()
         
@@ -54,11 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         directory.getProgram()!.initialize()
         directory.getParticipant()!.initialize()
         directory.getBarcode()!.initialize()
+        
+        MakeSureSVGghLinks()
+        let tintColor = UIColorFromSVGColorString("#5D6")!
+        GHControlFactory.setDefaultButtonTint(tintColor)
     }
     
     func executeMigrations() {
         let config = Realm.Configuration(
-            schemaVersion: 6,
+            schemaVersion: 9,
             migrationBlock: { migration, oldSchemaVersion in
 
                 if (oldSchemaVersion < 1) {

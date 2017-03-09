@@ -51,7 +51,7 @@ class ProgramDate : Object {
     }
     
     func getSortedTimeslots() -> Results<ProgramTimeslot> {
-        return timeslots.sorted(byProperty: "time")
+        return timeslots.sorted(byKeyPath: "time")
     }
     
     func getSortedPublicTimeslots() -> [ProgramTimeslot] {

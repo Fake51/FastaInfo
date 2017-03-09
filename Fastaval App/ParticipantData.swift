@@ -21,6 +21,17 @@ class ParticipantData : Object {
     
     dynamic var barcodeId = 0
     
+    dynamic var hasSleepArea = false
+    
+    dynamic var hasOrderedMattress = false
+    
+    dynamic var sleepAreaName = ""
+    
+    dynamic var sleepAreaRoomId = ""
+    
+    dynamic var messages = ""
+    
+    let events = List<ParticipantEvent>()
     
     override static func primaryKey() -> String? {
         return "id"

@@ -97,4 +97,12 @@ class Program : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         
         return realm.objects(ProgramDate.self)
     }
+    
+    public func getEventById(_ id : Int) -> ProgramEvent? {
+        let realm = try! Realm()
+        
+        let results = realm.objects(ProgramEvent.self).filter("id = \(id)")
+        
+        return results.count == 1 ? results.first : nil
+    }
 }

@@ -7,7 +7,7 @@
 //
 
 enum AppMessages : Message {
-    case user, news, program, map, settings, remoteSync
+    case user, news, program, map, settings, remoteSync, barcode
     
     static let UserType = "user"
     static let NewsType = "news"
@@ -15,6 +15,7 @@ enum AppMessages : Message {
     static let MapType = "map"
     static let SettingsType = "settings"
     static let RemoteSyncType = "remoteSync"
+    static let BarcodeType = "barcode"
     
     
     func messageKey() -> MessageKey {
@@ -25,6 +26,7 @@ enum AppMessages : Message {
         case .map: return AppMessages.MapType
         case .settings: return AppMessages.SettingsType
         case .remoteSync: return AppMessages.RemoteSyncType
+        case .barcode: return AppMessages.BarcodeType
         }
     }
     

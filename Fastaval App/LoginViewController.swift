@@ -28,9 +28,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class LoginViewController : UIViewController,  Subscriber {
-    fileprivate let uuid = UUID().uuidString
-
+class LoginViewController : EmbeddedViewController {
     @IBOutlet weak var participantFieldId: UITextField!
 
     @IBOutlet weak var passwordFieldId: UITextField!
@@ -82,31 +80,5 @@ class LoginViewController : UIViewController,  Subscriber {
         field.layer.borderWidth = 1
 
     }
-    
-    func receive(_ message: Message) {
-    }
-    
-    func getSubscriberId() -> String {
-        return uuid
-    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.SettingsType)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        let _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.SettingsType)
-    }
 }

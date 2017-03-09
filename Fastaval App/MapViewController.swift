@@ -26,7 +26,7 @@ class MapViewController: UIViewController {
         
     }
 
-    fileprivate func getSvgContent() -> String? {
+    private func getSvgContent() -> String? {
         guard let fileUrl = Directory.sharedInstance.getFileLocationProvider()?.getMapLocation() else {
             return nil
         }
@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
         
     }
     
-    fileprivate func generateHtml() -> String? {
+    private func generateHtml() -> String? {
         if let svgContent = getSvgContent() {
             let pageHtmlStart = "<html><head><style>svg {transform: rotate(90deg)} rect {display: none} path {display: none} "
             let pageHtmlMiddle = "</style></head><body>"

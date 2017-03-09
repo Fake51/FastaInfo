@@ -54,15 +54,9 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
         
         _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.ProgramType)
     }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func receive(_ message: Message) {
+        // todo redraw program on program message
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -118,7 +112,7 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
             return
         }
         
-        self.pageContent = data.sorted(byProperty: "dateId")
+        self.pageContent = data.sorted(byKeyPath: "dateId")
         return
     }
 

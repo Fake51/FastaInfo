@@ -8,18 +8,51 @@
 
 import UIKit
 
-class LoggedInViewController: UIViewController, Subscriber {
-    private let uuid = UUID().uuidString
+class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITableViewDataSource {
+
+    var logoutButton = UIButton(type: .system)
     
-    @IBOutlet weak var logoutButton: UIButton!
+    var updateButton = UIButton(type: .system)
+    
+    var participantName = UILabel()
+    
+    var sleepAreaLabel = UILabel()
+    
+    var sleepAreaInfo = UILabel()
+    
+    var participantMessages = UITextView()
+    
+    var programTable = LoggedInProgramView()
+    
+    var programTableHeader = UILabel()
+  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    @IBOutlet weak var participantName: UILabel!
-
-    func getSubscriberId() -> String {
-        return uuid
+        automaticallyAdjustsScrollViewInsets = false
+        // Do any additional setup after loading the view.
+        
+        setupUiElements()
+        setupStacks()
     }
 
-    @IBAction func logParticipantOut(_ sender: AnyObject) {
+    func setupUiElements() {
+        programTable.delegate = self
+        programTable.dataSource = self
+        programTable.register(UITableViewCell.self, forCellReuseIdentifier: "ParticipantCell")
+
+        programTable.estimatedRowHeight = 100
+        programTable.rowHeight = UITableViewAutomaticDimension
+        
+        programTableHeader.font = programTableHeader.font.withSize(15)
+        
+        logoutButton.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
+        
+        updateButton.addTarget(self, action: #selector(self.manualUpdate), for: .touchUpInside)
+    }
+    
+    func logout(sender: UIButton!) {
         guard let participant = Directory.sharedInstance.getParticipant() else {
             return
         }
@@ -27,39 +60,157 @@ class LoggedInViewController: UIViewController, Subscriber {
         participant.doLogout()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func manualUpdate(sender: UIButton!) {
+        Broadcaster.sharedInstance.publish(message: AppMessages.remoteSync)
     }
     
-    func receive(_ message: Message) {
+    func setupStacks() {
+        let nameStack = UIStackView(arrangedSubviews: [participantName, updateButton, logoutButton])
+        nameStack.axis = .horizontal
+        nameStack.alignment = .fill
+        nameStack.distribution = .equalCentering
+        nameStack.spacing = 10
         
+        let sleepStack = UIStackView(arrangedSubviews: [sleepAreaLabel, sleepAreaInfo])
+        sleepStack.axis = .horizontal
+        sleepStack.alignment = .fill
+        sleepStack.distribution = .equalSpacing
+        sleepStack.spacing = 10
+
+        let programStack = UIStackView(arrangedSubviews: [programTableHeader, programTable])
+        programStack.axis = .vertical
+        programStack.alignment = .fill
+        programStack.distribution = .fill
+        programStack.spacing = 0
+        
+        let topStack = UIStackView(arrangedSubviews: [nameStack, sleepStack, programStack, participantMessages])
+        topStack.axis = .vertical
+        topStack.alignment = .fill
+        topStack.distribution = .fill
+        topStack.spacing = 15
+        topStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(topStack)
+        
+        let stackDictionary = ["topStack": topStack]
+        let stackHeight = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[topStack]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: stackDictionary)
+        let stackWidth = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[topStack]-0-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: stackDictionary)
+
+        view.addConstraints(stackHeight)
+        view.addConstraints(stackWidth)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        let settings = Directory.sharedInstance.getAppSettings()
         
-        let lang = Directory.sharedInstance.getAppSettings()?.getLanguage().toString() ?? "en"
+        let lang = settings?.getLanguage().toString() ?? "en"
+        
+        if settings?.getRefreshRate() == RefreshRate.manual {
+            updateButton.isHidden = false
+        } else {
+            updateButton.isHidden = true
+        }
+        
+        let participant = Directory.sharedInstance.getParticipant()!
         
         logoutButton.setTitle("Log out".localized(lang: lang), for: .normal)
         
-        participantName.text = Directory.sharedInstance.getParticipant()?.getName()
+        updateButton.setTitle("Update".localized(lang: lang), for: .normal)
+
+        participantName.text = participant.name
+        
+        sleepAreaLabel.text = "Sleep area:".localized(lang: lang)
+        
+        sleepAreaInfo.text = participant.getSleepInfoTitle()
+        
+        participantMessages.text = participant.messages
+
+        programTableHeader.text = "My Program".localized(lang: lang)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        guard let data = Directory.sharedInstance.getParticipant() else {
+            return 0
+        }
+    
+        let days = data.program.map {$0.start.toFvDateString()}
+        
+        return Array(Set(days)).count
     }
-    */
+    
+    private func getProgramDayArray() -> [String: [ParticipantEvent]] {
 
+        var days = [String: [ParticipantEvent]]()
+
+        guard let data = Directory.sharedInstance.getParticipant() else {
+            return days
+        }
+        
+        for item in data.program {
+            let day = item.start.toFvDateString()
+            
+            if days[day] == nil {
+                days[day] = [ParticipantEvent]()
+            }
+            
+            days[day]!.append(item)
+        }
+
+        return days
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let days = getProgramDayArray()
+        
+        return days[Array(days.keys).sorted()[section]]?.count ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let days = getProgramDayArray()
+        
+        if days.count == 0 {
+            return nil
+        }
+        
+        return Array(days.keys).sorted()[section]
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = programTable.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath)
+
+        let days = getProgramDayArray()
+        
+        if days.count == 0 {
+            return cell
+        }
+        
+        guard let cellData = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]] else {
+            return cell
+        }
+
+        let lang = Directory.sharedInstance.getAppSettings()?.getLanguage().toString() ?? "en"
+
+        cell.textLabel?.text = lang == "en" ?cellData.titleEn : cellData.titleDa
+        
+        return cell
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let days = getProgramDayArray()
+        let program = Directory.sharedInstance.getProgram()!
+
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]], let event = program.getEventById(item.eventId) else {
+            return
+        }
+        
+        program.setCurrentEvent(event)
+
+        embeddingViewController?.performSegue(withIdentifier: "HomeToDetailedEventSegue", sender: embeddingViewController)
+    }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB690A3D45F36A189575695A /* Pods_Fastaval_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */; };
+		AF0CF82C1DFB27210003ED4F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CF82B1DFB27210003ED4F /* Date.swift */; };
+		AF0CF8301DFD88570003ED4F /* EmbeddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */; };
 		AF1666B91DB867750078F4F7 /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1666B81DB867750078F4F7 /* ProgramTableViewController.swift */; };
 		AF2099561DB0C90F00F4535F /* RemoteDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2099551DB0C90F00F4535F /* RemoteDependency.swift */; };
 		AF2099581DB0CA1F00F4535F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2099571DB0CA1F00F4535F /* AppSettings.swift */; };
@@ -23,7 +25,7 @@
 		AF20996F1DB36F8100F4535F /* ParticipantJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF20996E1DB36F8100F4535F /* ParticipantJsonParser.swift */; };
 		AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C941D7C0937006DB877 /* AppDelegate.swift */; };
 		AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* HomeViewController.swift */; };
-		AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* SecondViewController.swift */; };
+		AF339C991D7C0937006DB877 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* BarcodeViewController.swift */; };
 		AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9A1D7C0937006DB877 /* Main.storyboard */; };
 		AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9D1D7C0937006DB877 /* Assets.xcassets */; };
 		AF339CA11D7C0937006DB877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */; };
@@ -56,6 +58,8 @@
 		AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5790A1D98541500163E96 /* JsonApi.swift */; };
 		AFB264851DCE7A87008B0610 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */; };
 		AFB264871DCFCDC5008B0610 /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */; };
+		AFB264891DE5D8D5008B0610 /* LoggedInProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */; };
+		AFB2648B1DE64A6F008B0610 /* ParticipantEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */; };
 		AFED7FED1DAC0ADC0016D1BF /* FileLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */; };
 		AFED7FEF1DAD553D0016D1BF /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEE1DAD553D0016D1BF /* Program.swift */; };
 		AFED7FF11DAD557D0016D1BF /* ProgramState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FF01DAD557D0016D1BF /* ProgramState.swift */; };
@@ -87,6 +91,8 @@
 		44106CA0B7793F6209FE2B9F /* Pods_Fastaval_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		574EE61068AE574ABC4CD1C0 /* Pods_Fastaval_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BAD04B303C5BB3162FC3D9 /* Pods-Fastaval App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.release.xcconfig"; sourceTree = "<group>"; };
+		AF0CF82B1DFB27210003ED4F /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedViewController.swift; sourceTree = "<group>"; };
 		AF1666B81DB867750078F4F7 /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTableViewController.swift; sourceTree = "<group>"; };
 		AF2099551DB0C90F00F4535F /* RemoteDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteDependency.swift; sourceTree = "<group>"; };
 		AF2099571DB0CA1F00F4535F /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -103,7 +109,7 @@
 		AF339C911D7C0937006DB877 /* Fastaval App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fastaval App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339C941D7C0937006DB877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF339C961D7C0937006DB877 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AF339C981D7C0937006DB877 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AF339C981D7C0937006DB877 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
 		AF339C9B1D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF339C9D1D7C0937006DB877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF339CA01D7C0937006DB877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 		AFA5790A1D98541500163E96 /* JsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonApi.swift; sourceTree = "<group>"; };
 		AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInViewController.swift; sourceTree = "<group>"; };
 		AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
+		AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInProgramView.swift; sourceTree = "<group>"; };
+		AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantEvent.swift; sourceTree = "<group>"; };
 		AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLocationProvider.swift; sourceTree = "<group>"; };
 		AFED7FEE1DAD553D0016D1BF /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		AFED7FF01DAD557D0016D1BF /* ProgramState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramState.swift; sourceTree = "<group>"; };
@@ -269,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				AF339C961D7C0937006DB877 /* HomeViewController.swift */,
-				AF339C981D7C0937006DB877 /* SecondViewController.swift */,
+				AF339C981D7C0937006DB877 /* BarcodeViewController.swift */,
 				AF339CCD1D7DE30D006DB877 /* ContainerPlaceholder.swift */,
 				AF339CD61D83496F006DB877 /* LoginViewController.swift */,
 				AFA578DE1D8450EF00163E96 /* TabBarController.swift */,
@@ -279,6 +287,7 @@
 				AF7256BB1DC1117800F638E5 /* SettingsViewController.swift */,
 				AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */,
 				AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */,
+				AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				AF20995E1DB0F59500F4535F /* Barcode.swift */,
 				AF2099681DB2A84800F4535F /* RemoteSyncTimestamp.swift */,
 				AF20996C1DB36BDF00F4535F /* ParticipantData.swift */,
+				AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -312,6 +322,8 @@
 				AF20996E1DB36F8100F4535F /* ParticipantJsonParser.swift */,
 				AF20996A1DB32A6900F4535F /* UpdateScheduler.swift */,
 				AF99D7321DC48C5300EEC7F0 /* String.swift */,
+				AF0CF82B1DFB27210003ED4F /* Date.swift */,
+				AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -543,11 +555,14 @@
 				AF20996B1DB32A6900F4535F /* UpdateScheduler.swift in Sources */,
 				AFB264871DCFCDC5008B0610 /* DetailedEventViewController.swift in Sources */,
 				AF2099611DB2096F00F4535F /* BarcodeState.swift in Sources */,
-				AF339C991D7C0937006DB877 /* SecondViewController.swift in Sources */,
+				AF0CF8301DFD88570003ED4F /* EmbeddedViewController.swift in Sources */,
+				AF339C991D7C0937006DB877 /* BarcodeViewController.swift in Sources */,
 				AF3D44571DA144980078BE03 /* Stateful.swift in Sources */,
 				AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */,
 				AFED7FEF1DAD553D0016D1BF /* Program.swift in Sources */,
+				AFB2648B1DE64A6F008B0610 /* ParticipantEvent.swift in Sources */,
 				AFED7FF91DAF6CF50016D1BF /* ProgramEvent.swift in Sources */,
+				AFB264891DE5D8D5008B0610 /* LoggedInProgramView.swift in Sources */,
 				AF20995F1DB0F59500F4535F /* Barcode.swift in Sources */,
 				AF339CD31D7DFA99006DB877 /* Message.swift in Sources */,
 				AFA578EC1D85660800163E96 /* WidgetIdentifiers.swift in Sources */,
@@ -574,6 +589,7 @@
 				AF20995A1DB0F13E00F4535F /* RefreshRate.swift in Sources */,
 				AF2099581DB0CA1F00F4535F /* AppSettings.swift in Sources */,
 				AF339CCE1D7DE30D006DB877 /* ContainerPlaceholder.swift in Sources */,
+				AF0CF82C1DFB27210003ED4F /* Date.swift in Sources */,
 				AFED7FF71DAF6A7D0016D1BF /* ProgramTimeslot.swift in Sources */,
 				AFED7FFB1DB018B80016D1BF /* EventType.swift in Sources */,
 				AF1666B91DB867750078F4F7 /* ProgramTableViewController.swift in Sources */,
@@ -652,6 +668,7 @@
 		AF339CB91D7C0937006DB877 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -701,6 +718,7 @@
 		AF339CBA1D7C0937006DB877 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -747,6 +765,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
@@ -761,6 +780,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";

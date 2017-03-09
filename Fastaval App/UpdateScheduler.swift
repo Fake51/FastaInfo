@@ -87,7 +87,7 @@ class UpdateScheduler : Subscriber {
         DispatchQueue(label: "background").async {
             let realm = try! Realm()
             
-            var cacheData = realm.objects(RemoteSyncTimestamp.self).first
+            let cacheData = realm.objects(RemoteSyncTimestamp.self).first
             
             try! realm.write {
                 if cacheData != nil {
