@@ -39,9 +39,10 @@ class ProgramDate : Object {
     
     func getPublicTimeslots() -> [ProgramTimeslot] {
         var output = [ProgramTimeslot]()
+        let language = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
 
         for timeslot in timeslots {
-            if timeslot.hasNonSystemEvents() {
+            if timeslot.hasNonSystemEvents(language) {
                 output.append(timeslot)
             }
             
@@ -55,10 +56,11 @@ class ProgramDate : Object {
     }
     
     func getSortedPublicTimeslots() -> [ProgramTimeslot] {
+        let language = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
         var output = [ProgramTimeslot]()
         
         for timeslot in getSortedTimeslots() {
-            if timeslot.hasNonSystemEvents() {
+            if timeslot.hasNonSystemEvents(language) {
                 output.append(timeslot)
             }
         }

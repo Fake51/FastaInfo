@@ -25,18 +25,18 @@ class Program : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         return uuid
     }
     
-    private var currentEvent : ProgramEvent?
+    private var currentEvent : ProgramEventTimeslot?
     
     init(infosysApi: JsonApi, settings: AppSettings) {
         self.infosysApi = infosysApi
         self.settings = settings
     }
     
-    func setCurrentEvent(_ event : ProgramEvent) {
+    func setCurrentEvent(_ event : ProgramEventTimeslot) {
         currentEvent = event
     }
     
-    func getCurrentEvent() -> ProgramEvent? {
+    func getCurrentEvent() -> ProgramEventTimeslot? {
         return currentEvent
     }
     
@@ -105,4 +105,13 @@ class Program : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         
         return results.count == 1 ? results.first : nil
     }
+    
+    public func getEventTimeslotById(_ id : Int) -> ProgramEventTimeslot? {
+        let realm = try! Realm()
+        
+        let results = realm.objects(ProgramEventTimeslot.self).filter("id = \(id)")
+        
+        return results.count == 1 ? results.first : nil
+    }
+
 }

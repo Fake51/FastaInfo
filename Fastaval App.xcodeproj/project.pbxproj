@@ -23,6 +23,8 @@
 		AF20996B1DB32A6900F4535F /* UpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF20996A1DB32A6900F4535F /* UpdateScheduler.swift */; };
 		AF20996D1DB36BDF00F4535F /* ParticipantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF20996C1DB36BDF00F4535F /* ParticipantData.swift */; };
 		AF20996F1DB36F8100F4535F /* ParticipantJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF20996E1DB36F8100F4535F /* ParticipantJsonParser.swift */; };
+		AF31AEFA1E735456000D9F4B /* FvMapImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31AEF91E735456000D9F4B /* FvMapImage.swift */; };
+		AF31AEFC1E7408AF000D9F4B /* ProgramEventTimeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31AEFB1E7408AF000D9F4B /* ProgramEventTimeslot.swift */; };
 		AF339C951D7C0937006DB877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C941D7C0937006DB877 /* AppDelegate.swift */; };
 		AF339C971D7C0937006DB877 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C961D7C0937006DB877 /* HomeViewController.swift */; };
 		AF339C991D7C0937006DB877 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF339C981D7C0937006DB877 /* BarcodeViewController.swift */; };
@@ -106,6 +108,8 @@
 		AF20996A1DB32A6900F4535F /* UpdateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateScheduler.swift; sourceTree = "<group>"; };
 		AF20996C1DB36BDF00F4535F /* ParticipantData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantData.swift; sourceTree = "<group>"; };
 		AF20996E1DB36F8100F4535F /* ParticipantJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantJsonParser.swift; sourceTree = "<group>"; };
+		AF31AEF91E735456000D9F4B /* FvMapImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMapImage.swift; sourceTree = "<group>"; };
+		AF31AEFB1E7408AF000D9F4B /* ProgramEventTimeslot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramEventTimeslot.swift; sourceTree = "<group>"; };
 		AF339C911D7C0937006DB877 /* Fastaval App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fastaval App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339C941D7C0937006DB877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF339C961D7C0937006DB877 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				AFED7FF41DAECD9F0016D1BF /* ProgramDate.swift */,
 				AFED7FF61DAF6A7D0016D1BF /* ProgramTimeslot.swift */,
 				AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */,
+				AF31AEFB1E7408AF000D9F4B /* ProgramEventTimeslot.swift */,
 				AF2099571DB0CA1F00F4535F /* AppSettings.swift */,
 				AF20995E1DB0F59500F4535F /* Barcode.swift */,
 				AF2099681DB2A84800F4535F /* RemoteSyncTimestamp.swift */,
@@ -324,6 +329,7 @@
 				AF99D7321DC48C5300EEC7F0 /* String.swift */,
 				AF0CF82B1DFB27210003ED4F /* Date.swift */,
 				AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */,
+				AF31AEF91E735456000D9F4B /* FvMapImage.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -432,15 +438,19 @@
 				TargetAttributes = {
 					AF339C901D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = W3AVQ88Q2G;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					AF339CA61D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = W3AVQ88Q2G;
 						LastSwiftMigration = 0800;
 						TestTargetID = AF339C901D7C0937006DB877;
 					};
 					AF339CB11D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = W3AVQ88Q2G;
 						LastSwiftMigration = 0800;
 						TestTargetID = AF339C901D7C0937006DB877;
 					};
@@ -580,6 +590,7 @@
 				AF7256BC1DC1117800F638E5 /* SettingsViewController.swift in Sources */,
 				AF2099691DB2A84800F4535F /* RemoteSyncTimestamp.swift in Sources */,
 				AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */,
+				AF31AEFA1E735456000D9F4B /* FvMapImage.swift in Sources */,
 				AF2099631DB209BD00F4535F /* DirectoryItemTypes.swift in Sources */,
 				AFA578E11D84835C00163E96 /* Tabs.swift in Sources */,
 				AFED7FF51DAECD9F0016D1BF /* ProgramDate.swift in Sources */,
@@ -587,6 +598,7 @@
 				AFED7FF31DAECCCE0016D1BF /* ProgramJsonParser.swift in Sources */,
 				AF339CCC1D7C9700006DB877 /* Broadcaster.swift in Sources */,
 				AF20995A1DB0F13E00F4535F /* RefreshRate.swift in Sources */,
+				AF31AEFC1E7408AF000D9F4B /* ProgramEventTimeslot.swift in Sources */,
 				AF2099581DB0CA1F00F4535F /* AppSettings.swift in Sources */,
 				AF339CCE1D7DE30D006DB877 /* ContainerPlaceholder.swift in Sources */,
 				AF0CF82C1DFB27210003ED4F /* Date.swift in Sources */,
@@ -690,6 +702,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -709,6 +722,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -740,6 +754,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -766,10 +781,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.fastaval.fastainfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ace3ccc4-05ae-43f7-9428-63e17871a754";
+				PROVISIONING_PROFILE_SPECIFIER = FastaInfoDevelopment;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -781,10 +799,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fastaval.Fastaval-App";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.fastaval.fastainfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e545b2f0-faf9-489c-ba60-b6fc5f9ebe20";
+				PROVISIONING_PROFILE_SPECIFIER = FastaInfoDistribution;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

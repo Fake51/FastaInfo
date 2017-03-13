@@ -8,58 +8,102 @@
 
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var mapImageView: UIImageView!
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var imageViewTop: NSLayoutConstraint!
+    @IBOutlet weak var imageViewLeft: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageViewBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageViewRight: NSLayoutConstraint!
+    
+    private var highlightedRoom : String?
+    
+    override func viewDidLoad() {
+        scrollView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let map = FileLocationProvider().getMapLocation()
+        
+        let program = Directory.sharedInstance.getProgram()
+        
+        do {
+            let data = try Data(contentsOf: map)
+            let mapImage = FvMapImage(data: data)
+            var mapHighlightedImage : UIImage? = nil
+            
+            if let currentEvent = program?.getCurrentEvent() {
+                if let roomId = currentEvent.roomId {
+                    mapHighlightedImage = mapImage?.highlightRoom(roomId: roomId)
+                    
+                    highlightedRoom = roomId
+                    
+                }
+
+            }
+            
+            mapImageView.image = mapHighlightedImage ?? mapImage
+            
+        } catch {
+            
+        }
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        if let html = generateHtml() {
-            let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-
-            webView.loadHTMLString(html, baseURL: documentsDirectoryURL)
-            
-        }
-        
-    }
-
-    private func getSvgContent() -> String? {
-        guard let fileUrl = Directory.sharedInstance.getFileLocationProvider()?.getMapLocation() else {
-            return nil
-        }
-        
-        do {
-            let svgContent = try String(contentsOfFile: fileUrl.path)
-            
-            return svgContent
-        } catch {
-            return nil
-        }
-        
     }
     
-    private func generateHtml() -> String? {
-        if let svgContent = getSvgContent() {
-            let pageHtmlStart = "<html><head><style>svg {transform: rotate(90deg)} rect {display: none} path {display: none} "
-            let pageHtmlMiddle = "</style></head><body>"
-            let pageHtmlEnd = "</body></html>"
-            
-            var id_highlight = ""
-            
-            if let room = Directory.sharedInstance.getMap()?.getHighlightedRoom() {
-                id_highlight = "#" + room + " {display: initial} "
-                
-                Directory.sharedInstance.getMap()?.setHighlightedRoom(room: nil)
-            }
-
-            return pageHtmlStart + id_highlight + pageHtmlMiddle + svgContent + pageHtmlEnd
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return mapImageView
+    }
+    
+    private func updateMinZoomScaleForSize(size: CGSize) {
+        guard let mapSize = mapImageView.image else {
+            return
         }
         
-        return nil
+        let widthScale = size.width / mapSize.size.width
+        let heightScale = size.height / mapSize.size.height
+        let minScale = min(widthScale, heightScale)
 
+        if minScale.isInfinite || minScale < 0.01 {
+            return
+        }
+
+        scrollView.minimumZoomScale = minScale
+        scrollView.maximumZoomScale = 10.0
         
+        scrollView.zoomScale = minScale
+    }
+    
+    private func updateConstraintsForSize(size: CGSize) {
+        
+        let yOffset = max(0, (size.height - mapImageView.frame.height) / 2)
+        imageViewTop.constant = yOffset
+        imageViewBottom.constant = yOffset
+        
+        let xOffset = max(0, (size.width - mapImageView.frame.width) / 2)
+        imageViewLeft.constant = xOffset
+        imageViewRight.constant = xOffset
+        
+        view.layoutIfNeeded()
+    }
+    
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        updateConstraintsForSize(size: view.bounds.size)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        updateMinZoomScaleForSize(size: view.bounds.size)
     }
 }

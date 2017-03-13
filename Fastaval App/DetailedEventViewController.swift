@@ -10,7 +10,7 @@ import UIKit
 
 class DetailedEventViewController: UIViewController {
 
-    private var event : ProgramEvent?
+    private var timeslot : ProgramEventTimeslot?
 
     private var scrollView : UIScrollView!
     
@@ -33,6 +33,8 @@ class DetailedEventViewController: UIViewController {
         scrollView.addSubview(textView)
 
         view.addSubview(scrollView)
+        
+        self.view.backgroundColor = UIColor.white
 
     }
 
@@ -43,18 +45,18 @@ class DetailedEventViewController: UIViewController {
          
         let lang = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
         
-        event = Directory.sharedInstance.getProgram()!.getCurrentEvent()
+        timeslot = Directory.sharedInstance.getProgram()!.getCurrentEvent()
         
-        if event != nil {
+        if timeslot != nil {
             switch lang {
-            case .danish: self.navigationItem.title = event!.titleDa
-                textView.text = event?.descriptionDa
-            case .english: self.navigationItem.title = event!.titleEn
-                textView.text = event?.descriptionEn
+            case .danish: self.navigationItem.title = timeslot!.event!.titleDa
+                textView.text = timeslot!.event?.descriptionDa
+            case .english: self.navigationItem.title = timeslot!.event!.titleEn
+                textView.text = timeslot!.event?.descriptionEn
             }
         }
         
-        author.text = "Author(s): ".localized(lang: lang.toString()) + (event?.author)!
+        author.text = "Author(s): ".localized(lang: lang.toString()) + (timeslot?.event?.author)!
         
         adjustSize(textView)
         adjustSize(author)

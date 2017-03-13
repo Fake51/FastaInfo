@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SVGgh
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.executeMigrations()
 
-        //clean()
+        clean()
         
         self.doAppSetup()
 
@@ -59,15 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         directory.getProgram()!.initialize()
         directory.getParticipant()!.initialize()
         directory.getBarcode()!.initialize()
-        
-        MakeSureSVGghLinks()
-        let tintColor = UIColorFromSVGColorString("#5D6")!
-        GHControlFactory.setDefaultButtonTint(tintColor)
     }
     
     func executeMigrations() {
         let config = Realm.Configuration(
-            schemaVersion: 9,
+            schemaVersion: 11,
             migrationBlock: { migration, oldSchemaVersion in
 
                 if (oldSchemaVersion < 1) {

@@ -53,7 +53,7 @@ class ProgramTableViewController: UITableViewController {
         return timeslots[index]
     }
     
-    private func getSectionCell(_ sectionIndex : Int, _ cellIndex : Int) -> ProgramEvent? {
+    private func getSectionCell(_ sectionIndex : Int, _ cellIndex : Int) -> ProgramEventTimeslot? {
         guard let timeslot = getSection(sectionIndex) else {
             return nil
         }
@@ -79,26 +79,26 @@ class ProgramTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
+        let language = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
+        
         guard let timeslot = getSection(section) else {
             return 0
         }
         
-        return timeslot.events.count
+        return timeslot.getSortedPublicEvents(language).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        guard let event = getSectionCell(indexPath[0], indexPath[1]) else {
+        guard let slot = getSectionCell(indexPath[0], indexPath[1]) else {
             return cell
         }
 
         switch language! {
-        case AppLanguage.english: cell.textLabel?.text = event.titleEn
-        case AppLanguage.danish: cell.textLabel?.text = event.titleDa
+        case AppLanguage.english: cell.textLabel?.text = slot.event!.titleEn
+        case AppLanguage.danish: cell.textLabel?.text = slot.event!.titleDa
         }
-        
-        // Configure the cell...
 
         return cell
     }

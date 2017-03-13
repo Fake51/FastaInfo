@@ -9,7 +9,7 @@
 import UIKit
 
 class FileLocationProvider : DirectoryItem {
-    private let mapFilename     = "location.svg"
+    private let mapFilename     = "map.png"
     private let barcodeFilename = "barcode.png"
     
     func getMapLocation () -> URL {

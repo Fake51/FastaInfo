@@ -12,7 +12,7 @@ import Just
 
 class InfosysApi: JsonApi {
 
-    private let mapUrl = "https://infosys.fastaval.dk/img/location.svg"
+    private let mapUrl = "https://infosys.fastaval.dk/img/map2017.png"
     
     private let userUrl = "https://infosys.fastaval.dk/api/v3/user/:id:/?pass=:pass:"
     

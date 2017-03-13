@@ -25,6 +25,8 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
     var programTable = LoggedInProgramView()
     
     var programTableHeader = UILabel()
+    
+    var notCheckedInMessage = UILabel()
   
     
     override func viewDidLoad() {
@@ -50,6 +52,8 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         logoutButton.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
         
         updateButton.addTarget(self, action: #selector(self.manualUpdate), for: .touchUpInside)
+        
+        notCheckedInMessage.font.withSize(20)
     }
     
     func logout(sender: UIButton!) {
@@ -77,11 +81,11 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         sleepStack.distribution = .equalSpacing
         sleepStack.spacing = 10
 
-        let programStack = UIStackView(arrangedSubviews: [programTableHeader, programTable])
+        let programStack = UIStackView(arrangedSubviews: [programTableHeader, notCheckedInMessage, programTable])
         programStack.axis = .vertical
         programStack.alignment = .fill
         programStack.distribution = .fill
-        programStack.spacing = 0
+        programStack.spacing = 5
         
         let topStack = UIStackView(arrangedSubviews: [nameStack, sleepStack, programStack, participantMessages])
         topStack.axis = .vertical
@@ -114,6 +118,16 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         }
         
         let participant = Directory.sharedInstance.getParticipant()!
+        
+        if participant.getState() == ParticipantState.loggedInCheckedIn {
+            notCheckedInMessage.isHidden = true
+            programTable.isHidden = false
+        } else {
+            programTable.isHidden = true
+            notCheckedInMessage.isHidden = false
+        }
+        
+        notCheckedInMessage.text = "Not checked in yet".localized(lang: lang)
         
         logoutButton.setTitle("Log out".localized(lang: lang), for: .normal)
         
@@ -205,7 +219,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
 
         tableView.deselectRow(at: indexPath, animated: false)
 
-        guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]], let event = program.getEventById(item.eventId) else {
+        guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]], let event = program.getEventTimeslotById(item.scheduleId) else {
             return
         }
         

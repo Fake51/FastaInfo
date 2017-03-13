@@ -16,13 +16,13 @@ class ProgramTimeslot : Object{
 
     dynamic var programDate : ProgramDate?
     
-    let events = List<ProgramEvent>()
+    let eventTimeslots = List<ProgramEventTimeslot>()
 
     override static func primaryKey() -> String? {
         return "timeId"
     }
     
-    func getSortedEvents(_ language : AppLanguage) -> Results<ProgramEvent> {
+    func getSortedEvents(_ language : AppLanguage) -> [ProgramEventTimeslot] {
         var field : String
         
         switch language {
@@ -32,14 +32,32 @@ class ProgramTimeslot : Object{
             field = "titleDa"
         }
         
-        return events.sorted(byKeyPath: field)
+        let slots = eventTimeslots.filter("event != nil").map {(timeslot) -> ProgramEventTimeslot in
+            return timeslot
+        }
+        
+        let newEvents = slots.filter {(slot) -> Bool in
+            return slot.event?[field] != nil && slot.event?[field] as! String != ""
+        }
+        
+        return newEvents.sorted {
+            (slot1, slot2) -> Bool in
+            switch language {
+            case AppLanguage.english:
+                return (slot1.event!.titleEn ?? "") < (slot2.event!.titleEn ?? "")
+            case AppLanguage.danish:
+                return (slot1.event!.titleDa ?? "") < (slot2.event!.titleDa ?? "")
+            }
+        }
     }
 
-    func getSortedPublicEvents(_ language : AppLanguage) -> Results<ProgramEvent> {
-        return getSortedEvents(language).filter("type != 'system'")
+    func getSortedPublicEvents(_ language : AppLanguage) -> [ProgramEventTimeslot] {
+        return getSortedEvents(language).filter {(slot) -> Bool in
+            return slot.event!.type != "system"
+        }
     }
     
-    func hasNonSystemEvents() -> Bool {
-        return events.filter("type != 'system'").count > 0
+    func hasNonSystemEvents(_ language : AppLanguage) -> Bool {
+        return getSortedPublicEvents(language).count > 0
     }
 }

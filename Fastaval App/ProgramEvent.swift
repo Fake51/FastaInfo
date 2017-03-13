@@ -18,7 +18,7 @@ class ProgramEvent : Object {
     dynamic var author : String? = nil
 
     dynamic var type : String? = nil
-    let timeSlots =  List<ProgramTimeslot>()
+    let eventTimeSlots =  List<ProgramEventTimeslot>()
     
     override static func primaryKey() -> String? {
         return "id"

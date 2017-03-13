@@ -10,19 +10,19 @@ import SwiftyJSON
 import UIKit
 
 class ProgramJsonParser {
-    fileprivate var dates = Dictionary<Date, ProgramDate>()
+    private var dates = Dictionary<Date, ProgramDate>()
     
-    fileprivate var timeslots = Dictionary<Date, ProgramTimeslot>()
+    private var timeslots = Dictionary<String, ProgramTimeslot>()
     
-    fileprivate var events = Dictionary<Int, ProgramEvent>()
+    private var events = Dictionary<Int, ProgramEvent>()
     
-    fileprivate let dayFormatter : DateFormatter
+    private let dayFormatter : DateFormatter
     
     private let timeslotFormatter : DateFormatter
 
-    private var dateTimeslots = Dictionary<ProgramDate, Dictionary<Date, ProgramTimeslot>>()
+    private var dateTimeslots = Dictionary<ProgramDate, Dictionary<String, ProgramTimeslot>>()
     
-    fileprivate func getDate(_ time : Date) -> ProgramDate {
+    private func getDate(_ time : Date) -> ProgramDate {
         let dateId = dayFormatter.string(from: time.addingTimeInterval(TimeInterval(-60*60*4)))
         let date = dayFormatter.date(from: dateId)!
         
@@ -33,15 +33,17 @@ class ProgramJsonParser {
         return dates[date]!
     }
 
-    fileprivate func getSlot(_ time : Date, _ date : ProgramDate) -> ProgramTimeslot {
-        if timeslots[time] == nil {
-            timeslots[time] = ProgramTimeslot(value: ["time": time, "programDate": date, "timeId": timeslotFormatter.string(from: time)])
+    private func getSlot(_ time : Date, _ date : ProgramDate) -> ProgramTimeslot {
+        let timeString = timeslotFormatter.string(from: time)
+
+        if timeslots[timeString] == nil {
+            timeslots[timeString] = ProgramTimeslot(value: ["time": time, "programDate": date, "timeId": timeslotFormatter.string(from: time)])
         }
 
-        return timeslots[time]!
+        return timeslots[timeString]!
     }
 
-    fileprivate func getEvent(_ activity : JSON, _ slot : ProgramTimeslot) -> ProgramEvent? {
+    private func getEvent(_ activity : JSON, _ slot : ProgramTimeslot) -> ProgramEvent? {
         guard let eventId = activity["aktivitet_id"].int else {
             return nil
         }
@@ -56,9 +58,11 @@ class ProgramJsonParser {
     init() {
         dayFormatter = DateFormatter()
         dayFormatter.dateFormat = "yyyy-MM-dd"
+        dayFormatter.timeZone = TimeZone(identifier: "Europe/Copenhagen")
         
         timeslotFormatter = DateFormatter()
-        timeslotFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+        timeslotFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        timeslotFormatter.timeZone = TimeZone(identifier: "Europe/Copenhagen")
 
     }
     
@@ -75,20 +79,24 @@ class ProgramJsonParser {
 
                         if let event = getEvent(activity, slot) {
                             if dateTimeslots[date] == nil {
-                                dateTimeslots[date] = Dictionary<Date, ProgramTimeslot>()
+                                dateTimeslots[date] = Dictionary<String, ProgramTimeslot>()
                             }
 
-                            dateTimeslots[date]![slot.time] = slot
+                            dateTimeslots[date]![slot.timeId!] = slot
 
                             slot.programDate = date
-                            slot.events.append(event)
+
+                            let eventTimeslot = ProgramEventTimeslot(value: ["id": Int(schedule["afvikling_id"].int ?? 0), "roomId": "r" + (schedule["lokale_id"].string ?? ""), "event": event, "timeslot": slot])
                             
-                            event.timeSlots.append(slot)
+                            slot.eventTimeslots.append(eventTimeslot)
+                            
+                            event.eventTimeSlots.append(eventTimeslot)
                         }
                     }
                 }
             }
         }
+
 
         for (programDate, timeslots) in dateTimeslots {
             for (_, programTimeslot) in timeslots {
