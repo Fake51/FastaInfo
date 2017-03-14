@@ -55,13 +55,13 @@
 		AFA578EC1D85660800163E96 /* WidgetIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578EB1D85660800163E96 /* WidgetIdentifiers.swift */; };
 		AFA578F41D856A1B00163E96 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F31D856A1B00163E96 /* Participant.swift */; };
 		AFA578F61D856A4B00163E96 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F51D856A4B00163E96 /* Proxy.swift */; };
-		AFA578F81D8575D700163E96 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA578F71D8575D700163E96 /* News.swift */; };
 		AFA579091D9853CB00163E96 /* InfosysApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA579081D9853CB00163E96 /* InfosysApi.swift */; };
 		AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5790A1D98541500163E96 /* JsonApi.swift */; };
 		AFB264851DCE7A87008B0610 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */; };
 		AFB264871DCFCDC5008B0610 /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */; };
 		AFB264891DE5D8D5008B0610 /* LoggedInProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */; };
 		AFB2648B1DE64A6F008B0610 /* ParticipantEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */; };
+		AFC7E6231E780AEC0005183A /* FvForegroundAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */; };
 		AFED7FED1DAC0ADC0016D1BF /* FileLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */; };
 		AFED7FEF1DAD553D0016D1BF /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEE1DAD553D0016D1BF /* Program.swift */; };
 		AFED7FF11DAD557D0016D1BF /* ProgramState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FF01DAD557D0016D1BF /* ProgramState.swift */; };
@@ -147,13 +147,13 @@
 		AFA578EB1D85660800163E96 /* WidgetIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetIdentifiers.swift; sourceTree = "<group>"; };
 		AFA578F31D856A1B00163E96 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		AFA578F51D856A4B00163E96 /* Proxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
-		AFA578F71D8575D700163E96 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		AFA579081D9853CB00163E96 /* InfosysApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosysApi.swift; sourceTree = "<group>"; };
 		AFA5790A1D98541500163E96 /* JsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonApi.swift; sourceTree = "<group>"; };
 		AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInViewController.swift; sourceTree = "<group>"; };
 		AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
 		AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInProgramView.swift; sourceTree = "<group>"; };
 		AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantEvent.swift; sourceTree = "<group>"; };
+		AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvForegroundAlert.swift; sourceTree = "<group>"; };
 		AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLocationProvider.swift; sourceTree = "<group>"; };
 		AFED7FEE1DAD553D0016D1BF /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		AFED7FF01DAD557D0016D1BF /* ProgramState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramState.swift; sourceTree = "<group>"; };
@@ -299,7 +299,6 @@
 		AF339CC51D7C13B6006DB877 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AFA578F71D8575D700163E96 /* News.swift */,
 				AFA578F31D856A1B00163E96 /* Participant.swift */,
 				AF83121F1DA2DCCA002B52DE /* FvMap.swift */,
 				AFED7FEE1DAD553D0016D1BF /* Program.swift */,
@@ -330,6 +329,7 @@
 				AF0CF82B1DFB27210003ED4F /* Date.swift */,
 				AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */,
 				AF31AEF91E735456000D9F4B /* FvMapImage.swift */,
+				AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -589,6 +589,7 @@
 				AF20996D1DB36BDF00F4535F /* ParticipantData.swift in Sources */,
 				AF7256BC1DC1117800F638E5 /* SettingsViewController.swift in Sources */,
 				AF2099691DB2A84800F4535F /* RemoteSyncTimestamp.swift in Sources */,
+				AFC7E6231E780AEC0005183A /* FvForegroundAlert.swift in Sources */,
 				AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */,
 				AF31AEFA1E735456000D9F4B /* FvMapImage.swift in Sources */,
 				AF2099631DB209BD00F4535F /* DirectoryItemTypes.swift in Sources */,
@@ -609,7 +610,6 @@
 				AFA578DF1D8450EF00163E96 /* TabBarController.swift in Sources */,
 				AF2099561DB0C90F00F4535F /* RemoteDependency.swift in Sources */,
 				AF67B6511DB7F16D00B136B3 /* ProgramViewController.swift in Sources */,
-				AFA578F81D8575D700163E96 /* News.swift in Sources */,
 				AF339CD11D7DF9F2006DB877 /* Subscriber.swift in Sources */,
 				AF339CD71D83496F006DB877 /* LoginViewController.swift in Sources */,
 				AF3D44551DA0EBBF0078BE03 /* Directory.swift in Sources */,
@@ -781,6 +781,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Lind (M45HVHQV8F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Lind (M45HVHQV8F)";
 				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -799,7 +801,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Lind (W3AVQ88Q2G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Lind (W3AVQ88Q2G)";
 				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

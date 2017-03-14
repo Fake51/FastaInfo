@@ -24,7 +24,6 @@ class DetailedEventViewController: UIViewController {
         author = UITextView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30))
         
         textView = UITextView(frame: CGRect(x: 0, y: 30.0, width: self.view.bounds.width, height: self.view.bounds.height))
-
         
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -46,17 +45,33 @@ class DetailedEventViewController: UIViewController {
         let lang = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
         
         timeslot = Directory.sharedInstance.getProgram()!.getCurrentEvent()
+      
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 10
+        let attributes = [NSParagraphStyleAttributeName : style]
+
         
         if timeslot != nil {
             switch lang {
             case .danish: self.navigationItem.title = timeslot!.event!.titleDa
-                textView.text = timeslot!.event?.descriptionDa
+            textView.attributedText = NSAttributedString(string:  (timeslot!.event?.descriptionDa)!, attributes: attributes)
             case .english: self.navigationItem.title = timeslot!.event!.titleEn
-                textView.text = timeslot!.event?.descriptionEn
+                textView.attributedText = NSAttributedString(string:  (timeslot!.event?.descriptionEn)!, attributes: attributes)
             }
         }
         
-        author.text = "Author(s): ".localized(lang: lang.toString()) + (timeslot?.event?.author)!
+        textView.font = UIFont.systemFont(ofSize: 15)
+        
+        author.font = UIFont.systemFont(ofSize: 18)
+        
+        let authorContent = timeslot?.event?.author ?? ""
+        
+        if authorContent.characters.count > 0 {
+            author.text = "Author(s): ".localized(lang: lang.toString()) + authorContent
+            author.isHidden = false
+        } else {
+            author.isHidden = true
+        }
         
         adjustSize(textView)
         adjustSize(author)
@@ -82,15 +97,5 @@ class DetailedEventViewController: UIViewController {
         view.frame = frame
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

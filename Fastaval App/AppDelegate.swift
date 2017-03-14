@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.doAppSetup()
 
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+
+        
         return true
     }
 
@@ -45,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = directory.setItem(appSettings)
             .setItem(Participant(infosysApi: api, settings: appSettings))
             .setItem(locationProvider)
-            .setItem(News(infosysApi: api, settings: appSettings))
             .setItem(Program(infosysApi: api, settings: appSettings))
             .setItem(FvMap(infosysApi: api, settings: appSettings, locationProvider: locationProvider))
             .setItem(appSettings)
@@ -54,10 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = UpdateScheduler(appSettings: appSettings)
         
         directory.getMap()!.initialize()
-        directory.getNews()!.initialize()
         directory.getProgram()!.initialize()
         directory.getParticipant()!.initialize()
         directory.getBarcode()!.initialize()
+        
+        
     }
     
     func executeMigrations() {

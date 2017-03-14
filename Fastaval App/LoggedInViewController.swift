@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITableViewDataSource {
+class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITableViewDataSource, Subscriber {
 
     var logoutButton = UIButton(type: .system)
     
@@ -28,6 +28,15 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
     
     var notCheckedInMessage = UILabel()
   
+    private var uuid = UUID().uuidString
+    
+    func getSubscriberId() -> String {
+        return uuid
+    }
+    
+    func receive(_ message: Message) {
+        refreshContent()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +63,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         updateButton.addTarget(self, action: #selector(self.manualUpdate), for: .touchUpInside)
         
         notCheckedInMessage.font.withSize(20)
+        notCheckedInMessage.textAlignment = .center
     }
     
     func logout(sender: UIButton!) {
@@ -107,6 +117,19 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        refreshContent()
+        
+        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.UserType)
+    }
+
+    private func refreshContent() {
+        
         let settings = Directory.sharedInstance.getAppSettings()
         
         let lang = settings?.getLanguage().toString() ?? "en"
@@ -132,7 +155,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         logoutButton.setTitle("Log out".localized(lang: lang), for: .normal)
         
         updateButton.setTitle("Update".localized(lang: lang), for: .normal)
-
+        
         participantName.text = participant.name
         
         sleepAreaLabel.text = "Sleep area:".localized(lang: lang)
@@ -140,7 +163,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         sleepAreaInfo.text = participant.getSleepInfoTitle()
         
         participantMessages.text = participant.messages
-
+        
         programTableHeader.text = "My Program".localized(lang: lang)
     }
     
@@ -207,7 +230,12 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
 
         let lang = Directory.sharedInstance.getAppSettings()?.getLanguage().toString() ?? "en"
 
-        cell.textLabel?.text = lang == "en" ?cellData.titleEn : cellData.titleDa
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        let text = timeFormatter.string(from: cellData.start) + ": " + (lang == "en" ?cellData.titleEn : cellData.titleDa)
+
+        cell.textLabel?.text = text
         
         return cell
     }
@@ -219,7 +247,15 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
 
         tableView.deselectRow(at: indexPath, animated: false)
 
-        guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]], let event = program.getEventTimeslotById(item.scheduleId) else {
+        guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]] else {
+            return
+        }
+        
+        if item.type == "mad" {
+            return
+        }
+        
+        guard let event = program.getEventTimeslotById(item.scheduleId) else {
             return
         }
         

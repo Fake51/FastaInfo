@@ -11,7 +11,7 @@ target 'Fastaval App' do
   pod 'SwiftyJSON'
   pod 'Just'
   pod 'Eureka', '~> 2.0.0-beta.1'
-  pod 'SVGgh'
+  pod 'SwiftOverlays', '~> 3.0.0'
 
 
 end

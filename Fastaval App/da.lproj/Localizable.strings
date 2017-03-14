@@ -14,6 +14,8 @@
 "Choose frequency" = "Vælg interval";
 "Interval" = "Interval";
 
+// detailed view
+"Author(s): " = "Forfatter(e): ";
 
 // tabbar
 "Program" = "Program";
@@ -34,6 +36,11 @@
 "Update" = "Opdatér";
 "Not checked in yet" = "Ikke checket ind";
 
+// participant
+" starts in 15 minutes" = " starter om 15 minutter";
+"Heads up! You have " = "Husk! Du har ";
+" in the morning." = " på programmet i morgen tidlig.";
+"Fastaval Reminder" = "Fastaval Påmindelse";
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "84a-nP-UrD"; */
 "84a-nP-UrD.normalTitle" = "Login";

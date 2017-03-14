@@ -39,4 +39,11 @@ class ParticipantEvent : Object {
     override static func primaryKey() -> String? {
         return "scheduleId"
     }
+    
+    // returns true if the event takes place before 10
+    func isMorningEvent() -> Bool {
+        let components = Calendar.current.component(.hour, from: start)
+        
+        return components > 4 && components < 10
+    }
 }

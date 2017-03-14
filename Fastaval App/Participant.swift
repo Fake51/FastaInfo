@@ -20,6 +20,8 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
     private var uuid = UUID().uuidString
     
+    private var foregroundAlerts = [FvForegroundAlert]()
+    
     public var name : String {
         get {
             guard let data = getFromLocalStore() else {
@@ -92,6 +94,8 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
             self.updateLocalStorage(parsed)
             self.updateState()
             self.broadcastState()
+            
+            self.handleNotifications()
         }
         
     }
@@ -123,11 +127,116 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
     
     func initialize() {
         let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.RemoteSyncType)
+            .subscribe(self, messageKey: AppMessages.SettingsType)
         
         updateState()
         broadcastState()
+        
+        handleNotifications()
     }
 
+    private func handleNotifications() {
+        UIApplication.shared.cancelAllLocalNotifications()
+        
+        for alert in foregroundAlerts {
+            alert.remove()
+        }
+        
+        foregroundAlerts = [FvForegroundAlert]()
+
+        if self.state == ParticipantState.loggedInCheckedIn {
+
+            if self.settings.getUseNotifications() {
+                for event in self.program {
+                    // todo set notification date properly: start minus 15 minutes
+                    // set double notifications, if event is before 9.30
+                    let alarmTime = event.start.addingTimeInterval(-15*60)
+
+                    if alarmTime.compare(Date()) == ComparisonResult.orderedDescending {
+                        scheduleNormalAlarm(event, alarmTime)
+
+                        if event.isMorningEvent() {
+                            let eveningAlarmTime = makeEveningAlarmTime(event)
+                            
+                            if eveningAlarmTime.compare(Date()) == ComparisonResult.orderedDescending {
+                                scheduleEveningAlarm(event, eveningAlarmTime)
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func makeEveningAlarmTime(_ event : ParticipantEvent) -> Date {
+        let dayBefore = Calendar.current.date(byAdding: .day, value: -1, to: event.start)!
+        var components = Calendar.current.dateComponents([.year, .month, .day], from: dayBefore)
+        
+        components.hour = 21
+        components.minute = 0
+
+        return Calendar.current.date(from: components)!
+    }
+    
+    func scheduleEveningAlarm(_ event : ParticipantEvent, _ alarmTime : Date) {
+        let language = self.settings.getLanguage()
+        
+        var eventTitle : String
+        
+        if language == AppLanguage.english {
+            eventTitle = event.titleEn
+            
+        } else {
+            eventTitle = event.titleDa
+        }
+        
+        let reminderText = "Heads up! You have ".localized(lang: language.toString()) + eventTitle + " in the morning.".localized(lang: language.toString());
+        
+        scheduleAlarm(reminderText, alarmTime)
+        
+        let header = "Fastaval Reminder".localized(lang: language.toString())
+        
+        foregroundAlerts.append(FvForegroundAlert(alertTime: alarmTime, alertText: "\(header):\n\(reminderText)"))
+
+    }
+
+    
+    func scheduleNormalAlarm(_ event : ParticipantEvent, _ alarmTime : Date) {
+        let language = self.settings.getLanguage()
+        
+        var eventTitle : String
+        
+        if language == AppLanguage.english {
+            eventTitle = event.titleEn
+            
+        } else {
+            eventTitle = event.titleDa
+        }
+
+        let reminderText = eventTitle + " starts in 15 minutes".localized(lang: language.toString())
+        
+        scheduleAlarm(reminderText, alarmTime)
+
+        let header = "Fastaval Reminder".localized(lang: language.toString())
+
+        foregroundAlerts.append(FvForegroundAlert(alertTime: alarmTime, alertText: "\(header):\n\(reminderText)"))
+    }
+
+    private func scheduleAlarm(_ text : String, _ time : Date) {
+        let notification = UILocalNotification()
+        notification.timeZone = TimeZone(identifier: "Europe/Copenhagen")
+        notification.fireDate = time
+        
+        let language = self.settings.getLanguage()
+
+        notification.alertBody = text
+        notification.alertTitle = "Fastaval Reminder".localized(lang: language.toString())
+        
+        UIApplication.shared.scheduleLocalNotification(notification)
+
+    }
+    
     func broadcastState() {
         Broadcaster.sharedInstance.publish(message: AppMessages.user)
 
@@ -165,13 +274,22 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
     
     func receive(_ message: Message) {
-        guard let data = getFromLocalStore() else {
-            return
-        }
-
-        if self.state == ParticipantState.loggedInCheckedIn || self.state == ParticipantState.loggedInNotCheckedIn {
-            self.fetchUserData(data.id, data.password)
+        switch message {
+        case AppMessages.remoteSync:
+            guard let data = getFromLocalStore() else {
+                return
+            }
             
+            if self.state == ParticipantState.loggedInCheckedIn || self.state == ParticipantState.loggedInNotCheckedIn {
+                self.fetchUserData(data.id, data.password)
+                
+            }
+            
+        case AppMessages.settings:
+            handleNotifications()
+            break
+        default:
+            break
         }
     }
     
@@ -202,6 +320,8 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
         updateState()
         broadcastState()
+        
+        handleNotifications()
     }
     
     func getSleepInfoTitle() -> String {

@@ -19,6 +19,9 @@ class TabBarController: UITabBarController, Subscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBar.barTintColor = UIColor.orange
+        self.tabBar.tintColor = UIColor.black
+        
         self.updateTabs()
         
         let broadcaster = Broadcaster.sharedInstance

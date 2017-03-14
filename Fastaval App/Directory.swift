@@ -31,9 +31,6 @@ class Directory {
         return self.storage[DirectoryItemType.participant] as! Participant?
     }
 
-    func getNews() -> News? {
-        return self.storage[DirectoryItemType.news] as! News?
-    }
 
     func getMap() -> FvMap? {
         return self.storage[DirectoryItemType.map] as! FvMap?

@@ -35,10 +35,13 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
 
         self.navigationItem.title = startingViewController.dataObject?.getHumanFriendlyDate()
         
+        self.navigationController?.view.backgroundColor = UIColor.white
+        
         self.setViewControllers(
             [startingViewController],
             direction: .forward,
             animated: false, completion: nil)
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -1,29 +1,29 @@
 PODS:
   - Eureka (2.0.1)
   - Just (0.5.7)
-  - Realm (2.4.3):
-    - Realm/Headers (= 2.4.3)
-  - Realm/Headers (2.4.3)
-  - RealmSwift (2.4.3):
-    - Realm (= 2.4.3)
-  - SVGgh (1.8.0)
+  - Realm (2.4.4):
+    - Realm/Headers (= 2.4.4)
+  - Realm/Headers (2.4.4)
+  - RealmSwift (2.4.4):
+    - Realm (= 2.4.4)
+  - SwiftOverlays (3.0.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Eureka (~> 2.0.0-beta.1)
   - Just
   - RealmSwift
-  - SVGgh
+  - SwiftOverlays (~> 3.0.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
   Just: d19e769d86b965e39ae58cb3c0cbad07706634a8
-  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
-  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
-  SVGgh: 6818ae637becaf7b7b062bfa2399d1e566cc6e71
+  Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
+  RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
+  SwiftOverlays: 4cdd9e4f5c7817fb6348882059eb697e11685fad
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 1eb4c7d9086949c1a6706612574cc9dc05f1d0a0
+PODFILE CHECKSUM: c13164f12f59216d65cde6f2c27406d669ea448e
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0
