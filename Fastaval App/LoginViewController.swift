@@ -28,12 +28,20 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class LoginViewController : EmbeddedViewController {
+class LoginViewController : EmbeddedViewController, Subscriber {
     @IBOutlet weak var participantFieldId: UITextField!
 
     @IBOutlet weak var passwordFieldId: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var loginFailedLabel: UILabel!
+    
+    private var uuid = UUID().uuidString
+    
+    func getSubscriberId() -> String {
+        return uuid
+    }
     
     @IBAction func attemptLogin(_ sender: UIButton) {
 
@@ -65,6 +73,34 @@ class LoginViewController : EmbeddedViewController {
         if id_number > 0 && password.characters.count > 0 {
             participant.attemptLogin(id_number, password)
         }
+    }
+    
+    func receive(_ message: Message) {
+        guard let participant = Directory.sharedInstance.getParticipant() else {
+            return
+        }
+        
+        if participant.getState() == ParticipantState.notLoggedIn {
+            loginFailedLabel.isHidden = false
+        } else {
+            loginFailedLabel.isHidden = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType)
+        let language = Directory.sharedInstance.getAppSettings()!.getLanguage()
+        
+        loginFailedLabel.text = "Login failed".localized(lang: language.toString())
+        loginFailedLabel.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.UserType)
     }
     
     func markTextfieldValid(_ field: UITextField) {

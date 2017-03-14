@@ -80,22 +80,39 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
     func fetchUserData(_ id : Int, _ password : String) {
 
         infosysApi.getParticipantData(userId: id, password: password) { (jsonData : JSON?) in
-            guard let json = jsonData else {
-                let data = ParticipantData(value: ["password": password, "id": id])
+            DispatchQueue.main.async {
+                guard let json = jsonData else {
+                    let data = ParticipantData(value: ["password": password, "id": id])
 
-                self.updateLocalStorage(data)
+                    if self.getFromLocalStore() == nil {
+                        self.updateState()
+                        self.broadcastState()
+                    }
+
+                    
+                    self.updateLocalStorage(data)
+                    
+                    return
+                }
+
+                let parsed = ParticipantJsonParser().parse(json)
                 
-                return
+                if (parsed.name ?? "").characters.count == 0 {
+                    let data = ParticipantData(value: ["password": password, "id": id])
+                    
+                    self.updateLocalStorage(data)
+                    
+                    return
+                    
+                }
+                
+                parsed.password = password
+                self.updateLocalStorage(parsed)
+                self.updateState()
+                self.broadcastState()
+                
+                self.handleNotifications()
             }
-
-            let parsed = ParticipantJsonParser().parse(json)
-            
-            parsed.password = password
-            self.updateLocalStorage(parsed)
-            self.updateState()
-            self.broadcastState()
-            
-            self.handleNotifications()
         }
         
     }

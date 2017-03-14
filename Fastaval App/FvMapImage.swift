@@ -70,6 +70,16 @@ class FvMapImage: UIImage {
     "r65": [["x": 152, "y": 113, "width": 77, "height": 44]]
 ]
     
+    func getHighlightCenter(roomId : String) -> CGPoint? {
+        guard let coordinates = roomCoordinates[roomId] else {
+            return nil
+        }
+        
+        let firstCoordinates = coordinates[0]
+        
+        return CGPoint(x: firstCoordinates["x"]! + firstCoordinates["width"]! / 2, y: firstCoordinates["y"]! + firstCoordinates["height"]! / 2)
+    }
+    
     func highlightRoom(roomId : String) -> UIImage? {
         let scale = UIScreen.main.scale
         

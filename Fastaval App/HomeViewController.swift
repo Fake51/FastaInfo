@@ -12,9 +12,11 @@ class HomeViewController: UIViewController, Subscriber {
 
     @IBOutlet weak var upperHomeContainer: UIView!
     
-    fileprivate var lastUpperView: UIViewController?
+    private var lastUpperView: UIViewController?
     
-    fileprivate var uuid = UUID().uuidString
+    private var uuid = UUID().uuidString
+    
+    private var lastUpperViewType : String?
     
     func getSubscriberId() -> String {
         return uuid
@@ -46,6 +48,12 @@ class HomeViewController: UIViewController, Subscriber {
             break
             
         }
+        
+        if lastUpperViewType == id {
+            return
+        }
+        
+        lastUpperViewType = id
         
         switchUpperView(id)
     }

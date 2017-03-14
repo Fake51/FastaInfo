@@ -27,7 +27,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
     var programTableHeader = UILabel()
     
     var notCheckedInMessage = UILabel()
-  
+
     private var uuid = UUID().uuidString
     
     func getSubscriberId() -> String {
@@ -90,7 +90,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         sleepStack.alignment = .fill
         sleepStack.distribution = .equalSpacing
         sleepStack.spacing = 10
-
+        
         let programStack = UIStackView(arrangedSubviews: [programTableHeader, notCheckedInMessage, programTable])
         programStack.axis = .vertical
         programStack.alignment = .fill

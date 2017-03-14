@@ -21,7 +21,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var imageViewRight: NSLayoutConstraint!
     
-    private var highlightedRoom : String?
+    private var highlightedPoint : CGPoint?
     
     override func viewDidLoad() {
         scrollView.delegate = self
@@ -30,23 +30,21 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let map = FileLocationProvider().getMapLocation()
-        
-        let program = Directory.sharedInstance.getProgram()
-        
+        let mapLocation = FileLocationProvider().getMapLocation()
+        let map = Directory.sharedInstance.getMap()!
+
         do {
-            let data = try Data(contentsOf: map)
+            let data = try Data(contentsOf: mapLocation)
             let mapImage = FvMapImage(data: data)
             var mapHighlightedImage : UIImage? = nil
             
-            if let currentEvent = program?.getCurrentEvent() {
-                if let roomId = currentEvent.roomId {
-                    mapHighlightedImage = mapImage?.highlightRoom(roomId: roomId)
-                    
-                    highlightedRoom = roomId
-                    
-                }
 
+            if let roomId = map.getHighlightedRoom() {
+                mapHighlightedImage = mapImage?.highlightRoom(roomId: roomId)
+                
+                map.setHighlightedRoom(room: nil)
+                highlightedPoint = mapImage?.getHighlightCenter(roomId: roomId)
+                
             }
             
             mapImageView.image = mapHighlightedImage ?? mapImage
@@ -55,10 +53,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -82,6 +76,27 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         scrollView.maximumZoomScale = 10.0
         
         scrollView.zoomScale = minScale
+        
+        if highlightedPoint != nil {
+            setInitialZoom(highlightedPoint!, size)
+            highlightedPoint = nil
+        }
+
+    }
+
+    private func setInitialZoom(_ highlightedPoint : CGPoint, _ size : CGSize) {
+        let scale = CGFloat(2.5)
+        scrollView.zoomScale = scrollView.zoomScale * scale
+
+        let contentHeight = size.height * scale
+        let contentWidth = size.width * scale
+        let mapHeight = mapImageView.image!.size.height
+        let mapWidth = mapImageView.image!.size.width
+        
+        let translatedX = contentWidth * (highlightedPoint.x / mapWidth) - size.width / 2
+        let translatedY = contentHeight * (highlightedPoint.y / mapHeight) - size.height / 2
+        
+        scrollView.contentOffset = CGPoint(x: translatedX , y: translatedY)
     }
     
     private func updateConstraintsForSize(size: CGSize) {

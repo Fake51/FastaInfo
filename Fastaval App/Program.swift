@@ -40,6 +40,10 @@ class Program : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         return currentEvent
     }
     
+    func removeCurrentEvent() {
+        currentEvent = nil
+    }
+    
     func fetchProgramData() {
         
         infosysApi.getProgramData() { (jsonData : JSON?) in

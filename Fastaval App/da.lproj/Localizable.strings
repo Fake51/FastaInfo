@@ -36,6 +36,8 @@
 "Update" = "Opdatér";
 "Not checked in yet" = "Ikke checket ind";
 
+
+
 // participant
 " starts in 15 minutes" = " starter om 15 minutter";
 "Heads up! You have " = "Husk! Du har ";
@@ -44,6 +46,9 @@
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "84a-nP-UrD"; */
 "84a-nP-UrD.normalTitle" = "Login";
+
+// login
+"Login failed" = "Login fejlede";
 
 /* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
 "NDk-cv-Gan.text" = "Loaded by SecondViewController";
