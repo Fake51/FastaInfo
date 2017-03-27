@@ -76,12 +76,26 @@ class SettingsViewController : FormViewController, Subscriber {
         }
     }
     
+    private func updateNotificationRow(_ flag : Bool) {
+        if let settings = UIApplication.shared.currentUserNotificationSettings {
+            if !(settings.types.contains(.alert) || settings.types.contains(.badge) || settings.types.contains(.sound)) {
+                DispatchQueue.main.async {
+                    self.notificationRow!.value = false
+                    self.notificationRow!.updateCell()
+                }
+            }
+        }
+        
+        let _ = Directory.sharedInstance.getAppSettings()?.setUseNotifications(flag)
+        
+    }
+    
     private func createNotificationRow() -> CheckRow {
         return CheckRow() {
             $0.title = "Use alarms/notifications".localized(lang: self.lang!)
             $0.value = useNotifications!
             }.onChange() {
-                let _ = Directory.sharedInstance.getAppSettings()?.setUseNotifications($0.value!)
+                self.updateNotificationRow($0.value!)
         }
 
     }

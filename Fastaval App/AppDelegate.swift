@@ -8,9 +8,11 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -19,16 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.executeMigrations()
 
-        clean()
+//        clean()
         
         self.doAppSetup()
 
-        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-
+        registerForPushNotifications(application: application)
         
         return true
     }
-
+/*
     func clean() {
         let realm = try! Realm()
         try! realm.write {
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-    
+  */  
     func doAppSetup() {
         let api = InfosysApi()
         
@@ -55,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let _ = UpdateScheduler(appSettings: appSettings)
         
+        handleFirstRun(directory.getAppSettings()!)
+        
         directory.getMap()!.initialize()
         directory.getProgram()!.initialize()
         directory.getParticipant()!.initialize()
@@ -62,10 +65,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
+
+    func handleFirstRun(_ settings : AppSettings) {
+        if !settings.firstRun {
+            return
+        }
+
+        guard let programAsset = NSDataAsset(name: "activities") else {
+            return
+        }
+        
+        guard let mapAsset = Bundle.main.url(forResource: "map2017", withExtension: "png") else {
+            return
+        }
+        
+
+        Directory.sharedInstance.getMap()!.initFromAsset(mapAsset)
+        Directory.sharedInstance.getProgram()!.initFromAsset(programAsset)
+ 
+        settings.markDoneFirstRun()
+    }
     
     func executeMigrations() {
         let config = Realm.Configuration(
-            schemaVersion: 11,
+            schemaVersion: 12,
             migrationBlock: { migration, oldSchemaVersion in
 
                 if (oldSchemaVersion < 1) {
@@ -103,6 +126,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        let _ = FvForegroundAlert(alertTime: notification.fireDate!, alertText: notification.alertBody!, duration: 10)
+    }
+    
+    func registerForPushNotifications(application: UIApplication) {
+        
+        if #available(iOS 10.0, *){
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
+                if (granted) {
+                    UIApplication.shared.registerForRemoteNotifications()
+                } else {
+                    guard let settings = Directory.sharedInstance.getAppSettings() else {
+                        return
+                    }
+                    
+                    if settings.getUseNotifications() {
+                        DispatchQueue.main.async {
+                            let _ = settings.setUseNotifications(false)
+                        }
+                    }
+                }
+            })
+        } else {
+            let notificationSettings = UIUserNotificationSettings(
+                types: [.badge, .sound, .alert], categories: nil)
+            application.registerUserNotificationSettings(notificationSettings)
+            
+        }
+        
+    }
 
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+        if notificationSettings.types.rawValue > 0 {
+            application.registerForRemoteNotifications()
+            return
+            
+        }
+        
+        guard let settings = Directory.sharedInstance.getAppSettings() else {
+            return
+        }
+        
+        if settings.getUseNotifications() {
+            DispatchQueue.main.async {
+                let _ = settings.setUseNotifications(false)
+            }
+        }
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(token)
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register:", error)
+    }
+
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("wut")
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let _ = FvForegroundAlert(alertTime: notification.date, alertText: notification.request.content.body, duration: 10)
+    }
 }
 

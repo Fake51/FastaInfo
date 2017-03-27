@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgramTableViewController: UITableViewController {
+class ProgramTableViewController: UITableViewController, Subscriber {
 
     var dataObject : ProgramDate?
     
@@ -16,12 +16,20 @@ class ProgramTableViewController: UITableViewController {
     
     var parentController : UIViewController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-
+    var timeslots = [ProgramTimeslot]()
+    
+    fileprivate var uuid = UUID().uuidString
+    
+    func getSubscriberId() -> String {
+        return uuid
     }
-
+    
+    func receive(_ message: Message) {
+        timeslots = dataObject?.getSortedPublicTimeslots() ?? [ProgramTimeslot]()
+        
+        self.tableView.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -32,16 +40,22 @@ class ProgramTableViewController: UITableViewController {
         
         language = lang
 
-        self.tableView.reloadData()
+        let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.ProgramType)
+        
+        timeslots = dataObject?.getSortedPublicTimeslots() ?? [ProgramTimeslot]()
 
+        self.tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.ProgramType)
     }
     
     // MARK: - Table view data source
 
     private func getSection(_ index : Int) -> ProgramTimeslot? {
-        guard let timeslots = dataObject?.getSortedPublicTimeslots() else {
-            return nil
-        }
         
         if index >= timeslots.count {
             return nil
@@ -65,16 +79,11 @@ class ProgramTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        guard let timeslots = dataObject?.getPublicTimeslots() else {
-            return 0
-        }
         
         return timeslots.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         
         let language = Directory.sharedInstance.getAppSettings()?.getLanguage() ?? AppLanguage.english
         

@@ -35,7 +35,16 @@ class Barcode : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.RemoteSyncType)
         let _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.UserType)
         
-        // check participant state and update accordingly
+        guard let participant = Directory.sharedInstance.getParticipant() else {
+            return
+        }
+        
+        let barcodeLocation = FileLocationProvider().getBarcodeLocation()
+        
+        if participant.getState() == ParticipantState.loggedInCheckedIn && FileManager.default.fileExists(atPath: barcodeLocation.path) {
+            self.state = BarcodeState.ready
+        }
+
     }
 
     func getDirectoryType() -> DirectoryItemType {

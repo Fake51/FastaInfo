@@ -343,11 +343,11 @@
             </objects>
             <point key="canvasLocation" x="-181.59999999999999" y="-758.77061469265368"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Program-->
         <scene sceneID="3fr-Yw-w99">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OOR-3I-7xW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="My Program" image="star" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d1U-n7-eVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -368,6 +368,7 @@
         <image name="calendar" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
+        <image name="star" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zbv-wj-yvB"/>

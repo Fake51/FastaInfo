@@ -71,10 +71,8 @@ class UpdateScheduler : Subscriber {
             }
             
         } else {
-            var next = Date()
-            next.addTimeInterval(TimeInterval(settings.getRefreshRate().convertToSeconds()))
-            seconds = next.timeIntervalSince(Date())
-         }
+            seconds = 1
+        }
 
         syncTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(self.timerDidFire), userInfo: nil, repeats: false)
     }

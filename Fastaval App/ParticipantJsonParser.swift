@@ -12,9 +12,10 @@ class ParticipantJsonParser {
     func parse(_ json : JSON) -> ParticipantData {
         let id = Int(json["id"].string!)!
         let barcodeId = Int(json["barcode"].string!)!
-        let checkedIn = json["checked_in"].number! != 0
-        let hasSleepArea = json["sleep"]["id"].int! != 1
-        let hasOrderedMattress = json["sleep"]["mattress"].int! == 1
+        let checkedIn = json["checked_in"].number ?? 0 != 0
+        print(json["sleep"], json["sleep"]["access"])
+        let hasSleepArea = json["sleep"]["access"].int ?? 0 == 1
+        let hasOrderedMattress = json["sleep"]["mattress"].int ?? 0 == 1
         
         let storage = ParticipantData(value: [
             "id": id,

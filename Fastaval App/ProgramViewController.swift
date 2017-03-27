@@ -9,17 +9,13 @@
 import UIKit
 import RealmSwift
 
-class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, Subscriber {
+class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
-    fileprivate var uuid = UUID().uuidString
     
     private var pageContent : Results<ProgramDate>?
     
     private var index = 0
-    
-    func getSubscriberId() -> String {
-        return uuid
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +28,6 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
         self.dataSource = self
 
         let startingViewController: ProgramTableViewController = viewControllerAtIndex(0)!
-
-        self.navigationItem.title = startingViewController.dataObject?.getHumanFriendlyDate()
         
         self.navigationController?.view.backgroundColor = UIColor.white
         
@@ -41,32 +35,89 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
             [startingViewController],
             direction: .forward,
             animated: false, completion: nil)
+
+        setNavItems(index)
+    }
+    
+    private func setNavItems(_ newIndex : Int) {
+        setLeftNavButton(newIndex)
+        setNavTitle(newIndex)
+        setRightNavButton(newIndex)
+    }
+
+    private func setNavTitle(_ newIndex : Int) {
+        guard let item = viewControllerAtIndex(newIndex) else {
+            return
+        }
+        
+        self.navigationItem.title = item.dataObject?.getHumanFriendlyDate()
+
+    }
+    
+    dynamic func activateNext() {
+        index += 1
+
+        guard let nextController = self.viewControllerAtIndex(index)        else {
+            return
+        }
+        
+        self.setViewControllers([nextController], direction: .forward, animated: false, completion: nil)
+        
+        setNavItems(index)
+    }
+
+    dynamic func activatePrevious() {
+        if index - 1 < 0 {
+            return
+        }
+        
+        index -= 1
+        
+        guard let nextController = self.viewControllerAtIndex(index)        else {
+            return
+        }
+        
+        self.setViewControllers([nextController], direction: .forward, animated: false, completion: nil)
+        
+        setNavItems(index)
+    }
+
+    private func setLeftNavButton(_ newIndex : Int) {
+        if newIndex - 1 < 0 {
+            self.navigationItem.leftBarButtonItem = nil
+            return
+        }
+        
+        guard let previousViewController : ProgramTableViewController = viewControllerAtIndex(newIndex - 1) else {
+            self.navigationItem.leftBarButtonItem = nil
+            return
+        }
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: previousViewController.dataObject?.getHumanFriendlyDate(), style: .plain, target: self, action: #selector(self.activatePrevious))
         
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    private func setRightNavButton(_ newIndex : Int) {
+        guard let nextViewController : ProgramTableViewController = viewControllerAtIndex(newIndex + 1) else {
+            self.navigationItem.rightBarButtonItem = nil
+            return
+        }
         
-        _ = Broadcaster.sharedInstance.subscribe(self, messageKey: AppMessages.ProgramType)
-        
-    }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nextViewController.dataObject?.getHumanFriendlyDate(), style: .plain, target: self, action: #selector(self.activateNext))
 
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        _ = Broadcaster.sharedInstance.unsubscribe(self, messageKey: AppMessages.ProgramType)
-    }
-    
-    func receive(_ message: Message) {
-        // todo redraw program on program message
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let controller = pageViewController.viewControllers!.first! as! ProgramTableViewController
         
-        self.navigationItem.title = controller.dataObject?.getHumanFriendlyDate()
+        let newIndex = indexofViewController(viewController: pageViewController.viewControllers!.first! as! ProgramTableViewController)
 
+        if newIndex == NSNotFound {
+            return
+        }
+        
+        index = newIndex
+
+        setNavItems(newIndex)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -78,8 +129,6 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
         
         index -= 1
     
-        self.index = index
-
         let view = viewControllerAtIndex(index)
 
         return view
@@ -93,7 +142,7 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
         }
         
         index += 1
-        
+
         guard let content = pageContent else {
             return nil
         }
@@ -103,8 +152,6 @@ class ProgramViewController: UIPageViewController, UIPageViewControllerDelegate,
             
         }
         
-        self.index = index
-
         let view = viewControllerAtIndex(index)
 
         return view

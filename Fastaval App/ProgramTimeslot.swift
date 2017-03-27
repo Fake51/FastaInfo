@@ -18,13 +18,19 @@ class ProgramTimeslot : Object{
     
     let eventTimeslots = List<ProgramEventTimeslot>()
 
+    var sortedCache : [AppLanguage : [ProgramEventTimeslot]] = [:]
+    
     override static func primaryKey() -> String? {
         return "timeId"
     }
     
+    override static func ignoredProperties() -> [String] {
+        return ["tmpID"]
+    }
+    
     func getSortedEvents(_ language : AppLanguage) -> [ProgramEventTimeslot] {
         var field : String
-        
+
         switch language {
         case AppLanguage.english:
             field = "titleEn"
@@ -52,9 +58,16 @@ class ProgramTimeslot : Object{
     }
 
     func getSortedPublicEvents(_ language : AppLanguage) -> [ProgramEventTimeslot] {
-        return getSortedEvents(language).filter {(slot) -> Bool in
+
+        if sortedCache[language] != nil {
+            return sortedCache[language]!
+        }
+        
+        sortedCache[language] = getSortedEvents(language).filter {(slot) -> Bool in
             return slot.event!.type != "system"
         }
+        
+        return sortedCache[language]!
     }
     
     func hasNonSystemEvents(_ language : AppLanguage) -> Bool {

@@ -12,6 +12,8 @@ class TabBarController: UITabBarController, Subscriber {
 
     fileprivate let uuid = UUID().uuidString
 
+    private var barcodeController : UIViewController?
+    
     func getSubscriberId() -> String {
         return uuid
     }
@@ -39,12 +41,32 @@ class TabBarController: UITabBarController, Subscriber {
     }
 
     private func setBarcodeState() {
+        var controllers = self.viewControllers
+
         guard let barcode = Directory.sharedInstance.getBarcode() else {
-            setIconState(Tabs.barcode.rawValue, state: false)
+            
+            if controllers?.count ?? 0 > Tabs.barcode.rawValue && barcodeController == nil {
+                barcodeController = controllers?.remove(at: Tabs.barcode.rawValue)
+                self.viewControllers = controllers
+            }
+            
             return
         }
-        
-        setIconState(Tabs.barcode.rawValue, state: barcode.getState() == BarcodeState.ready)
+
+        if controllers?.count ?? 0 > Tabs.barcode.rawValue {
+            if barcodeController == nil && barcode.getState() == .notReady {
+                barcodeController = controllers?.remove(at: Tabs.barcode.rawValue)
+                self.viewControllers = controllers
+                return
+            }
+            
+            if barcodeController != nil && barcode.getState() == .ready {
+                controllers?.insert(barcodeController!, at: Tabs.barcode.rawValue)
+                barcodeController = nil
+                self.viewControllers = controllers
+            }
+        }
+
     }
     
     private func setProgramState() {
@@ -87,10 +109,20 @@ class TabBarController: UITabBarController, Subscriber {
             return
         }
 
+        var modifier = 0
+        
+        if items.count == 4 {
+            modifier -= 1
+        }
+        
         items[Tabs.home.rawValue].title = Tabs.getTranslationKey(Tabs.home).localized(lang: language)
-        items[Tabs.settings.rawValue].title = Tabs.getTranslationKey(Tabs.settings).localized(lang: language)
-        items[Tabs.map.rawValue].title = Tabs.getTranslationKey(Tabs.map).localized(lang: language)
-        items[Tabs.barcode.rawValue].title = Tabs.getTranslationKey(Tabs.barcode).localized(lang: language)
+        items[Tabs.settings.rawValue + modifier].title = Tabs.getTranslationKey(Tabs.settings).localized(lang: language)
+        items[Tabs.map.rawValue + modifier].title = Tabs.getTranslationKey(Tabs.map).localized(lang: language)
+        
+        if items.count == 5 {
+            items[Tabs.barcode.rawValue].title = Tabs.getTranslationKey(Tabs.barcode).localized(lang: language)
+        }
+
         items[Tabs.program.rawValue].title = Tabs.getTranslationKey(Tabs.program).localized(lang: language)
     }
     

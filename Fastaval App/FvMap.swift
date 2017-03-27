@@ -34,9 +34,30 @@ class FvMap : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         self.locationProvider = locationProvider
         
     }
-  
+    
+    private func getMapModificationDate() -> Date {
+        let mapLocation = FileLocationProvider().getMapLocation()
+
+        // if map does not exists, choose waybackwhen date, as any new map will be fine
+        if !FileManager.default.fileExists(atPath: mapLocation.path) {
+            return Date(timeIntervalSince1970: TimeInterval(0))
+        }
+        
+        do {
+            let attributes = try FileManager.default.attributesOfItem(atPath: mapLocation.path)
+
+            return attributes[FileAttributeKey.modificationDate] as? Date ?? Date(timeIntervalSince1970: TimeInterval(0))
+            
+        } catch {
+            return Date(timeIntervalSince1970: TimeInterval(0))
+
+        }
+    }
+    
     func receive(_ message: Message) {
-        infosysApi.isUpdatedMapAvailable(lastUpdate: Date()) {(_ updateAvailable: Bool) in
+        let date = getMapModificationDate()
+        
+        infosysApi.isUpdatedMapAvailable(lastUpdate: date) {(_ updateAvailable: Bool) in
             if updateAvailable {
                 self.getMap()
                 
@@ -83,5 +104,15 @@ class FvMap : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
     func getDirectoryType() -> DirectoryItemType {
         return DirectoryItemType.map
+    }
+    
+    func initFromAsset(_ asset : URL) {
+        let fileURL = locationProvider.getMapLocation()
+        do {
+            try FileManager.default.copyItem(at: asset, to: fileURL)
+            
+        } catch {
+            
+        }
     }
 }

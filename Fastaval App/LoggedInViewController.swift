@@ -165,6 +165,8 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         participantMessages.text = participant.messages
         
         programTableHeader.text = "My Program".localized(lang: lang)
+        
+        programTable.reloadData()
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -250,13 +252,17 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
         guard let item = days[Array(days.keys).sorted()[indexPath[0]]]?[indexPath[1]] else {
             return
         }
-        
+
         if item.type == "mad" {
             return
         }
         
         guard let event = program.getEventTimeslotById(item.scheduleId) else {
             return
+        }
+        
+        if let map = Directory.sharedInstance.getMap() {
+            map.setHighlightedRoom(room: item.activityRoomId != "" ? item.activityRoomId : item.meetingRoomId)
         }
         
         program.setCurrentEvent(event)

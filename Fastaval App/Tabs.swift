@@ -15,7 +15,7 @@ enum Tabs : Int {
     
     static func getTranslationKey(_ input : Tabs) -> String {
         switch input {
-        case .home: return "Home"
+        case .home: return "My Program"
         case .program: return "Program"
         case .barcode: return "Barcode"
         case .map: return "Map"

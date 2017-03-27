@@ -77,6 +77,21 @@ class Program : Stateful, RemoteDependency, DirectoryItem, Subscriber {
         Broadcaster.sharedInstance.publish(message: AppMessages.program)
     }
     
+    func initFromAsset(_ asset : NSDataAsset) {
+        let json = JSON(data: asset.data)
+        
+        let parser = ProgramJsonParser()
+        let parsed = parser.makeActivityData(json: json)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            for (_, programDate) in parsed {
+                realm.add(programDate, update: true)
+            }
+        }
+
+    }
+    
     func initialize() {
         if getData().count == 0 {
             fetchProgramData()

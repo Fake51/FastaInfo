@@ -18,6 +18,8 @@ class AppSettings : Object, DirectoryItem {
     
     dynamic var id = 1
     
+    dynamic var firstRun = true
+    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -40,6 +42,7 @@ class AppSettings : Object, DirectoryItem {
                 self.language = result[0].language
                 self.refreshInterval = result[0].refreshInterval
                 self.allowNotifications = result[0].allowNotifications
+                self.firstRun = result[0].firstRun
                 
             }
         }
@@ -103,5 +106,16 @@ class AppSettings : Object, DirectoryItem {
         syncData()
         
         return allowNotifications
+    }
+    
+    func markDoneFirstRun() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            self.firstRun = false
+            
+            realm.add(self, update: true)
+            
+        }
     }
 }

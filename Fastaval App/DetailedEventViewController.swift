@@ -24,6 +24,7 @@ class DetailedEventViewController: UIViewController {
         author = UITextView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30))
         
         textView = UITextView(frame: CGRect(x: 0, y: 30.0, width: self.view.bounds.width, height: self.view.bounds.height))
+        textView.isEditable = false
         
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -86,7 +87,9 @@ class DetailedEventViewController: UIViewController {
     
     dynamic func segueToMap() {
         if let map = Directory.sharedInstance.getMap() {
-            map.setHighlightedRoom(room: timeslot?.roomId)
+            if map.getHighlightedRoom() == nil {
+                map.setHighlightedRoom(room: timeslot?.roomId)
+            }
         }
 
         self.performSegue(withIdentifier: "EventToMapSegue", sender: self)

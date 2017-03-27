@@ -70,6 +70,8 @@
 		AFED7FF71DAF6A7D0016D1BF /* ProgramTimeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FF61DAF6A7D0016D1BF /* ProgramTimeslot.swift */; };
 		AFED7FF91DAF6CF50016D1BF /* ProgramEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */; };
 		AFED7FFB1DB018B80016D1BF /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FFA1DB018B80016D1BF /* EventType.swift */; };
+		AFF7A0191E7D4582004CE7F6 /* Statics.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF7A0181E7D4582004CE7F6 /* Statics.xcassets */; };
+		AFF7A01B1E7D48BC004CE7F6 /* map2017.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF7A01A1E7D48BC004CE7F6 /* map2017.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,9 @@
 		AFED7FF61DAF6A7D0016D1BF /* ProgramTimeslot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTimeslot.swift; sourceTree = "<group>"; };
 		AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramEvent.swift; sourceTree = "<group>"; };
 		AFED7FFA1DB018B80016D1BF /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		AFF7A0181E7D4582004CE7F6 /* Statics.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Statics.xcassets; sourceTree = "<group>"; };
+		AFF7A01A1E7D48BC004CE7F6 /* map2017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2017.png; sourceTree = "<group>"; };
+		AFF7A01C1E7ECB8B004CE7F6 /* Fastaval App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fastaval App.entitlements"; sourceTree = "<group>"; };
 		B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC207661F08024E22878899 /* Pods-Fastaval App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +250,7 @@
 		AF339C931D7C0937006DB877 /* Fastaval App */ = {
 			isa = PBXGroup;
 			children = (
+				AFF7A01C1E7ECB8B004CE7F6 /* Fastaval App.entitlements */,
 				AF99D7381DC4908800EEC7F0 /* Assets */,
 				AF20995D1DB0F17900F4535F /* Enums */,
 				AF339CC61D7C13FC006DB877 /* Framework */,
@@ -253,6 +259,7 @@
 				AF339CC51D7C13B6006DB877 /* Models */,
 				AF339C941D7C0937006DB877 /* AppDelegate.swift */,
 				AF339C9A1D7C0937006DB877 /* Main.storyboard */,
+				AFF7A0181E7D4582004CE7F6 /* Statics.xcassets */,
 				AF339C9D1D7C0937006DB877 /* Assets.xcassets */,
 				AF339C9F1D7C0937006DB877 /* LaunchScreen.storyboard */,
 				AF339CA21D7C0937006DB877 /* Info.plist */,
@@ -352,6 +359,7 @@
 		AF99D7381DC4908800EEC7F0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AFF7A01A1E7D48BC004CE7F6 /* map2017.png */,
 				AF99D7391DC490AE00EEC7F0 /* Localizable.strings */,
 			);
 			name = Assets;
@@ -441,6 +449,11 @@
 						DevelopmentTeam = W3AVQ88Q2G;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					AF339CA61D7C0937006DB877 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -483,8 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF339CA11D7C0937006DB877 /* LaunchScreen.storyboard in Resources */,
+				AFF7A0191E7D4582004CE7F6 /* Statics.xcassets in Resources */,
 				AF99D73B1DC490AE00EEC7F0 /* Localizable.strings in Resources */,
 				AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */,
+				AFF7A01B1E7D48BC004CE7F6 /* map2017.png in Resources */,
 				AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,10 +796,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Fastaval App/Fastaval App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Lind (M45HVHQV8F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Lind (M45HVHQV8F)";
 				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.fastaval.fastainfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -801,10 +818,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Fastaval App/Fastaval App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Lind (W3AVQ88Q2G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Lind (W3AVQ88Q2G)";
 				DEVELOPMENT_TEAM = W3AVQ88Q2G;
 				INFOPLIST_FILE = "Fastaval App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.fastaval.fastainfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
