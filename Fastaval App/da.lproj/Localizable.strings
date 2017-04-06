@@ -27,6 +27,7 @@
 
 // program
 "Author(s): " = "Forfatter(e): ";
+"Map" = "Kort";
 
 // logged in controller
 "Log out" = "Log ud";

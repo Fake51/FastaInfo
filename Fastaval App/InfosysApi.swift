@@ -20,6 +20,10 @@ class InfosysApi: JsonApi {
    
     private let barcodeUrl = "https://infosys.fastaval.dk/participant/ean8/:id:"
     
+    private let registerUrl = "https://infosys.fastaval.dk/api/user/:id:/register"
+
+    private let unRegisterUrl = "https://infosys.fastaval.dk/api/user/:id:/unregister"
+
     // get activities list
     func getProgramData(_ callback: @escaping (JSON?) -> Void) {
         Just.get(programUrl, params: [:]) { (r) in
@@ -61,7 +65,7 @@ class InfosysApi: JsonApi {
     }
 
     func retrieveBarcode(userId: Int, location: URL, completedHandler: @escaping () -> Void) {
-        Just.get(barcodeUrl.replacingOccurrences(of: ":id", with: String(userId))) { (r) in
+        Just.get(barcodeUrl.replacingOccurrences(of: ":id:", with: String(userId))) { (r) in
             if r.ok {
                 try! r.content?.write(to: location)
                 
@@ -89,4 +93,12 @@ class InfosysApi: JsonApi {
         }
     }
 
+    func registerDeviceRemotely(userId: Int, deviceId: String) {
+        Just.post(self.registerUrl.replacingOccurrences(of: ":id:", with: String(userId)), json: ["apple_id": deviceId])
+        
+    }
+    
+    func unRegisterDeviceRemotely(userId: Int) {
+        Just.post(self.unRegisterUrl.replacingOccurrences(of: ":id:", with: String(userId)))
+    }
 }

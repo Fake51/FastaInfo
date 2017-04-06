@@ -20,8 +20,14 @@ class AppSettings : Object, DirectoryItem {
     
     dynamic var firstRun = true
     
+    dynamic var deviceId = ""
+    
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["deviceId"]
     }
     
     func getDirectoryType() -> DirectoryItemType {

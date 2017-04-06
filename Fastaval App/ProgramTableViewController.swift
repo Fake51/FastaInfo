@@ -95,15 +95,20 @@ class ProgramTableViewController: UITableViewController, Subscriber {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FvProgramItem", for: indexPath) as! FvProgramItemTableViewCell
 
         guard let slot = getSectionCell(indexPath[0], indexPath[1]) else {
             return cell
         }
 
         switch language! {
-        case AppLanguage.english: cell.textLabel?.text = slot.event!.titleEn
-        case AppLanguage.danish: cell.textLabel?.text = slot.event!.titleDa
+        case AppLanguage.english: cell.programTitle?.text = slot.event!.titleEn
+        case AppLanguage.danish: cell.programTitle?.text = slot.event!.titleDa
+        }
+        
+        if let iconId = slot.event!.getEventIconId() {
+            cell.programIcon?.image = UIImage(imageLiteralResourceName: iconId)
+            
         }
 
         return cell

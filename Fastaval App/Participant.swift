@@ -61,7 +61,7 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
             for event in data.events.sorted(byKeyPath: "start") {
                 output.append(event)
             }
-            
+
             return output
         }
     }
@@ -241,6 +241,22 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
 
     }
     
+    func handleRemoteNotificationRegistration() {
+        guard let data = getFromLocalStore() else {
+            return
+        }
+        
+        if settings.deviceId.characters.count == 0 {
+            return
+        }
+
+        if data.barcodeId == 0 || !settings.allowNotifications {
+            self.infosysApi.unRegisterDeviceRemotely(userId: data.id)
+        } else {
+            self.infosysApi.registerDeviceRemotely(userId: data.id, deviceId: settings.deviceId)
+        }
+    }
+    
     private func updateState() {
         guard let data = getFromLocalStore() else {
             self.state = ParticipantState.notLoggedIn
@@ -265,6 +281,8 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
             }
         }
 
+        handleRemoteNotificationRegistration()
+
     }
     
     func getDirectoryType() -> DirectoryItemType {
@@ -286,6 +304,7 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
             
         case AppMessages.settings:
             handleNotifications()
+            handleRemoteNotificationRegistration()
             break
         default:
             break
@@ -315,6 +334,8 @@ class Participant : Stateful, RemoteDependency, DirectoryItem, Subscriber {
             return
         }
         
+        infosysApi.unRegisterDeviceRemotely(userId: data.id)
+
         purgeLocalData(data)
 
         updateState()

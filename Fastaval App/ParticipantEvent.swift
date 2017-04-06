@@ -46,4 +46,8 @@ class ParticipantEvent : Object {
         
         return components > 4 && components < 10
     }
+    
+    func getEventIconId() -> String? {
+        return EventType.toImageId(EventType.translate(type))
+    }
 }

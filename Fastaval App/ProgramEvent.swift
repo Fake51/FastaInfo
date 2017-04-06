@@ -24,4 +24,12 @@ class ProgramEvent : Object {
         return "id"
     }
 
+    func getEventIconId() -> String? {
+        guard let t = type else {
+            return nil
+        }
+        
+        return EventType.toImageId(EventType.translate(t))
+    }
+    
 }

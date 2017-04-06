@@ -51,7 +51,7 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
     func setupUiElements() {
         programTable.delegate = self
         programTable.dataSource = self
-        programTable.register(UITableViewCell.self, forCellReuseIdentifier: "ParticipantCell")
+        programTable.register(FvMyProgramTableViewCell.self, forCellReuseIdentifier: "ParticipantCell")
 
         programTable.estimatedRowHeight = 100
         programTable.rowHeight = UITableViewAutomaticDimension
@@ -253,10 +253,10 @@ class LoggedInViewController: EmbeddedViewController, UITableViewDelegate, UITab
             return
         }
 
-        if item.type == "mad" {
+        if item.type == "mad" || item.type == "gds" {
             return
         }
-        
+
         guard let event = program.getEventTimeslotById(item.scheduleId) else {
             return
         }

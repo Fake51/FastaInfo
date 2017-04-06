@@ -23,36 +23,75 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     
     private var highlightedPoint : CGPoint?
     
+    private var roomId : String?
+    
     override func viewDidLoad() {
         scrollView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        if UIDevice.current.orientation.isLandscape {
+            mapImageView.image = getUnrotatedMap()?.imageRotatedByDegrees(deg: -90)
+            
+        } else {
+            mapImageView.image = getUnrotatedMap()
+        }
+    
+    }
+    
+    func getUnrotatedMap() -> UIImage? {
+        var tempImage : UIImage? = nil
         let mapLocation = FileLocationProvider().getMapLocation()
         let map = Directory.sharedInstance.getMap()!
-
+        
         do {
             let data = try Data(contentsOf: mapLocation)
             let mapImage = FvMapImage(data: data)
             var mapHighlightedImage : UIImage? = nil
             
-
-            if let roomId = map.getHighlightedRoom() {
+            
+            if let roomId = map.getHighlightedRoom() ?? self.roomId {
+                self.roomId = roomId
                 mapHighlightedImage = mapImage?.highlightRoom(roomId: roomId)
                 
                 map.setHighlightedRoom(room: nil)
                 highlightedPoint = mapImage?.getHighlightCenter(roomId: roomId)
-                
+
             }
             
-            mapImageView.image = mapHighlightedImage ?? mapImage
-            
+            tempImage = mapHighlightedImage ?? mapImage
+
         } catch {
             
         }
+
+        return tempImage
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        self.roomId = nil
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard let unrotatedMap = getUnrotatedMap() else {
+            return
+        }
+        
+        if mapImageView == nil {
+            return
+        }
+        
+        if UIDevice.current.orientation.isLandscape {
+            mapImageView.image = unrotatedMap.imageRotatedByDegrees(deg: -90)
+            
+        } else {
+            mapImageView.image = unrotatedMap
+        }
+
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -93,10 +132,23 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         let mapHeight = mapImageView.image!.size.height
         let mapWidth = mapImageView.image!.size.width
         
-        let translatedX = contentWidth * (highlightedPoint.x / mapWidth) - size.width / 2
-        let translatedY = contentHeight * (highlightedPoint.y / mapHeight) - size.height / 2
+        var translatedX : CGFloat
+        var translatedY : CGFloat
         
-        scrollView.contentOffset = CGPoint(x: translatedX , y: translatedY)
+        if UIDevice.current.orientation.isLandscape {
+            translatedX = contentWidth * (highlightedPoint.y / mapWidth) - size.width / 2
+            
+            translatedY = contentHeight * ((mapHeight - highlightedPoint.x) / mapHeight) - size.height / 2
+            
+        } else {
+            translatedX = contentWidth * (highlightedPoint.x / mapWidth) - size.width / 2
+
+            translatedY = contentHeight * (highlightedPoint.y / mapHeight) - size.height / 2
+            
+        }
+        
+        
+        scrollView.contentOffset = CGPoint(x: translatedX, y: translatedY)
     }
     
     private func updateConstraintsForSize(size: CGSize) {

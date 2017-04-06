@@ -14,11 +14,12 @@ class FvForegroundAlert {
     private let alertTime : Date
     private let alertText : String
 
-    private var alertTimer : Timer?
-
     init(alertTime : Date, alertText : String, duration : Int) {
         self.alertTime = alertTime
         self.alertText = alertText
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
 
         DispatchQueue.main.async {
             guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
@@ -29,7 +30,7 @@ class FvForegroundAlert {
             let width = viewController.view.bounds.width
 
             let timeLabel = UILabel()
-            timeLabel.text = "16:30"
+            timeLabel.text = formatter.string(from: (alertTime))
             timeLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             timeLabel.textAlignment = .center
             timeLabel.backgroundColor = .white

@@ -14,4 +14,7 @@ protocol JsonApi {
     func retrieveMap(location: URL, completedHandler: @escaping () -> Void)
     func retrieveBarcode(userId: Int, location: URL, completedHandler: @escaping () -> Void)
     func isUpdatedMapAvailable(lastUpdate: Date, completedHandler: @escaping (_ updateAvailable: Bool) -> ()) -> Void
+    func registerDeviceRemotely(userId: Int, deviceId: String)
+    func unRegisterDeviceRemotely(userId: Int)
+
 }

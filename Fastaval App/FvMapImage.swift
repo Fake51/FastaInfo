@@ -111,4 +111,5 @@ class FvMapImage: UIImage {
         
         return newImage
     }
+    
 }

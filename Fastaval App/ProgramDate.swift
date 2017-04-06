@@ -47,7 +47,7 @@ class ProgramDate : Object {
             }
             
         }
-        print("called")
+
         return output
     }
     

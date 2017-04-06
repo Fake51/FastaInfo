@@ -44,6 +44,10 @@
 		AF3D445B1DA14AF40078BE03 /* NewsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D445A1DA14AF40078BE03 /* NewsState.swift */; };
 		AF67B6511DB7F16D00B136B3 /* ProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67B6501DB7F16D00B136B3 /* ProgramViewController.swift */; };
 		AF7256BC1DC1117800F638E5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7256BB1DC1117800F638E5 /* SettingsViewController.swift */; };
+		AF7560251E89B0EE00427111 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7560241E89B0EE00427111 /* Image.swift */; };
+		AF7560271E8CD6E800427111 /* FvProgramItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7560261E8CD6E800427111 /* FvProgramItemTableViewCell.swift */; };
+		AF7560291E8D41A900427111 /* FvMyProgramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7560281E8D41A900427111 /* FvMyProgramTableViewCell.swift */; };
+		AF75602B1E8D9AEB00427111 /* SbLoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75602A1E8D9AEB00427111 /* SbLoggedInViewController.swift */; };
 		AF8312201DA2DCCA002B52DE /* FvMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83121F1DA2DCCA002B52DE /* FvMap.swift */; };
 		AF8312221DA2DD0C002B52DE /* FvMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8312211DA2DD0C002B52DE /* FvMapState.swift */; };
 		AF9672FB1DA2C3F1006AD5E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */; };
@@ -61,6 +65,8 @@
 		AFB264871DCFCDC5008B0610 /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */; };
 		AFB264891DE5D8D5008B0610 /* LoggedInProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */; };
 		AFB2648B1DE64A6F008B0610 /* ParticipantEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */; };
+		AFBBC3041E943767003B62FC /* FvNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBBC3031E943767003B62FC /* FvNotification.swift */; };
+		AFBBC3061E94432F003B62FC /* map2017.png in Resources */ = {isa = PBXBuildFile; fileRef = AFBBC3051E94432F003B62FC /* map2017.png */; };
 		AFC7E6231E780AEC0005183A /* FvForegroundAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */; };
 		AFED7FED1DAC0ADC0016D1BF /* FileLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */; };
 		AFED7FEF1DAD553D0016D1BF /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FEE1DAD553D0016D1BF /* Program.swift */; };
@@ -71,7 +77,6 @@
 		AFED7FF91DAF6CF50016D1BF /* ProgramEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */; };
 		AFED7FFB1DB018B80016D1BF /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7FFA1DB018B80016D1BF /* EventType.swift */; };
 		AFF7A0191E7D4582004CE7F6 /* Statics.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF7A0181E7D4582004CE7F6 /* Statics.xcassets */; };
-		AFF7A01B1E7D48BC004CE7F6 /* map2017.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF7A01A1E7D48BC004CE7F6 /* map2017.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +142,10 @@
 		AF3D445A1DA14AF40078BE03 /* NewsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsState.swift; sourceTree = "<group>"; };
 		AF67B6501DB7F16D00B136B3 /* ProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramViewController.swift; sourceTree = "<group>"; };
 		AF7256BB1DC1117800F638E5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AF7560241E89B0EE00427111 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		AF7560261E8CD6E800427111 /* FvProgramItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvProgramItemTableViewCell.swift; sourceTree = "<group>"; };
+		AF7560281E8D41A900427111 /* FvMyProgramTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMyProgramTableViewCell.swift; sourceTree = "<group>"; };
+		AF75602A1E8D9AEB00427111 /* SbLoggedInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SbLoggedInViewController.swift; sourceTree = "<group>"; };
 		AF83121F1DA2DCCA002B52DE /* FvMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMap.swift; sourceTree = "<group>"; };
 		AF8312211DA2DD0C002B52DE /* FvMapState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvMapState.swift; sourceTree = "<group>"; };
 		AF9672FA1DA2C3F1006AD5E1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +164,8 @@
 		AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
 		AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInProgramView.swift; sourceTree = "<group>"; };
 		AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantEvent.swift; sourceTree = "<group>"; };
+		AFBBC3031E943767003B62FC /* FvNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvNotification.swift; sourceTree = "<group>"; };
+		AFBBC3051E94432F003B62FC /* map2017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2017.png; sourceTree = "<group>"; };
 		AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FvForegroundAlert.swift; sourceTree = "<group>"; };
 		AFED7FEC1DAC0ADC0016D1BF /* FileLocationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLocationProvider.swift; sourceTree = "<group>"; };
 		AFED7FEE1DAD553D0016D1BF /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
@@ -165,7 +176,6 @@
 		AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramEvent.swift; sourceTree = "<group>"; };
 		AFED7FFA1DB018B80016D1BF /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		AFF7A0181E7D4582004CE7F6 /* Statics.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Statics.xcassets; sourceTree = "<group>"; };
-		AFF7A01A1E7D48BC004CE7F6 /* map2017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2017.png; sourceTree = "<group>"; };
 		AFF7A01C1E7ECB8B004CE7F6 /* Fastaval App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fastaval App.entitlements"; sourceTree = "<group>"; };
 		B6ADB16EF0B7CBBFC48E1127 /* Pods_Fastaval_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastaval_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC207661F08024E22878899 /* Pods-Fastaval App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastaval App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastaval App/Pods-Fastaval App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +309,9 @@
 				AFB264841DCE7A87008B0610 /* LoggedInViewController.swift */,
 				AFB264861DCFCDC5008B0610 /* DetailedEventViewController.swift */,
 				AFB264881DE5D8D5008B0610 /* LoggedInProgramView.swift */,
+				AF7560261E8CD6E800427111 /* FvProgramItemTableViewCell.swift */,
+				AF7560281E8D41A900427111 /* FvMyProgramTableViewCell.swift */,
+				AF75602A1E8D9AEB00427111 /* SbLoggedInViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -309,15 +322,16 @@
 				AFA578F31D856A1B00163E96 /* Participant.swift */,
 				AF83121F1DA2DCCA002B52DE /* FvMap.swift */,
 				AFED7FEE1DAD553D0016D1BF /* Program.swift */,
-				AFED7FF41DAECD9F0016D1BF /* ProgramDate.swift */,
 				AFED7FF61DAF6A7D0016D1BF /* ProgramTimeslot.swift */,
 				AFED7FF81DAF6CF50016D1BF /* ProgramEvent.swift */,
 				AF31AEFB1E7408AF000D9F4B /* ProgramEventTimeslot.swift */,
 				AF2099571DB0CA1F00F4535F /* AppSettings.swift */,
 				AF20995E1DB0F59500F4535F /* Barcode.swift */,
 				AF2099681DB2A84800F4535F /* RemoteSyncTimestamp.swift */,
+				AFED7FF41DAECD9F0016D1BF /* ProgramDate.swift */,
 				AF20996C1DB36BDF00F4535F /* ParticipantData.swift */,
 				AFB2648A1DE64A6F008B0610 /* ParticipantEvent.swift */,
+				AFBBC3031E943767003B62FC /* FvNotification.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -332,11 +346,12 @@
 				AFED7FF21DAECCCE0016D1BF /* ProgramJsonParser.swift */,
 				AF20996E1DB36F8100F4535F /* ParticipantJsonParser.swift */,
 				AF20996A1DB32A6900F4535F /* UpdateScheduler.swift */,
+				AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */,
 				AF99D7321DC48C5300EEC7F0 /* String.swift */,
 				AF0CF82B1DFB27210003ED4F /* Date.swift */,
-				AF0CF82F1DFD88570003ED4F /* EmbeddedViewController.swift */,
 				AF31AEF91E735456000D9F4B /* FvMapImage.swift */,
 				AFC7E6221E780AEC0005183A /* FvForegroundAlert.swift */,
+				AF7560241E89B0EE00427111 /* Image.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -359,7 +374,7 @@
 		AF99D7381DC4908800EEC7F0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				AFF7A01A1E7D48BC004CE7F6 /* map2017.png */,
+				AFBBC3051E94432F003B62FC /* map2017.png */,
 				AF99D7391DC490AE00EEC7F0 /* Localizable.strings */,
 			);
 			name = Assets;
@@ -499,7 +514,7 @@
 				AFF7A0191E7D4582004CE7F6 /* Statics.xcassets in Resources */,
 				AF99D73B1DC490AE00EEC7F0 /* Localizable.strings in Resources */,
 				AF339C9E1D7C0937006DB877 /* Assets.xcassets in Resources */,
-				AFF7A01B1E7D48BC004CE7F6 /* map2017.png in Resources */,
+				AFBBC3061E94432F003B62FC /* map2017.png in Resources */,
 				AF339C9C1D7C0937006DB877 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +606,8 @@
 				AF20995F1DB0F59500F4535F /* Barcode.swift in Sources */,
 				AF339CD31D7DFA99006DB877 /* Message.swift in Sources */,
 				AFA578EC1D85660800163E96 /* WidgetIdentifiers.swift in Sources */,
+				AF75602B1E8D9AEB00427111 /* SbLoggedInViewController.swift in Sources */,
+				AF7560291E8D41A900427111 /* FvMyProgramTableViewCell.swift in Sources */,
 				AF20996F1DB36F8100F4535F /* ParticipantJsonParser.swift in Sources */,
 				AFA578F61D856A4B00163E96 /* Proxy.swift in Sources */,
 				AF9672FB1DA2C3F1006AD5E1 /* MapViewController.swift in Sources */,
@@ -606,13 +623,16 @@
 				AF2099691DB2A84800F4535F /* RemoteSyncTimestamp.swift in Sources */,
 				AFC7E6231E780AEC0005183A /* FvForegroundAlert.swift in Sources */,
 				AFA5790B1D98541500163E96 /* JsonApi.swift in Sources */,
+				AF7560251E89B0EE00427111 /* Image.swift in Sources */,
 				AF31AEFA1E735456000D9F4B /* FvMapImage.swift in Sources */,
 				AF2099631DB209BD00F4535F /* DirectoryItemTypes.swift in Sources */,
 				AFA578E11D84835C00163E96 /* Tabs.swift in Sources */,
 				AFED7FF51DAECD9F0016D1BF /* ProgramDate.swift in Sources */,
+				AFBBC3041E943767003B62FC /* FvNotification.swift in Sources */,
 				AF8312221DA2DD0C002B52DE /* FvMapState.swift in Sources */,
 				AFED7FF31DAECCCE0016D1BF /* ProgramJsonParser.swift in Sources */,
 				AF339CCC1D7C9700006DB877 /* Broadcaster.swift in Sources */,
+				AF7560271E8CD6E800427111 /* FvProgramItemTableViewCell.swift in Sources */,
 				AF20995A1DB0F13E00F4535F /* RefreshRate.swift in Sources */,
 				AF31AEFC1E7408AF000D9F4B /* ProgramEventTimeslot.swift in Sources */,
 				AF2099581DB0CA1F00F4535F /* AppSettings.swift in Sources */,

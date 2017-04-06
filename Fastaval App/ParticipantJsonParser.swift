@@ -13,7 +13,7 @@ class ParticipantJsonParser {
         let id = Int(json["id"].string!)!
         let barcodeId = Int(json["barcode"].string!)!
         let checkedIn = json["checked_in"].number ?? 0 != 0
-        print(json["sleep"], json["sleep"]["access"])
+
         let hasSleepArea = json["sleep"]["access"].int ?? 0 == 1
         let hasOrderedMattress = json["sleep"]["mattress"].int ?? 0 == 1
         
@@ -29,11 +29,11 @@ class ParticipantJsonParser {
             "sleepAreaRoomId": json["sleep"]["area_id"].string ?? "",
             "messages": json["messages"].string ?? ""
             ])
-        
+
         if json["food"] != JSON.null {
             addFoodEvents(storage, json["food"])
         }
-        
+
         if json["scheduling"] != JSON.null {
             addActivityEvents(storage, json["scheduling"])
         }
@@ -50,7 +50,7 @@ class ParticipantJsonParser {
             event.end = Date(timeIntervalSince1970: TimeInterval(foodObject["time_end"].number!  ))
             event.titleDa = foodObject["title_da"].string! + ": " + foodObject["text_da"].string!
             event.titleEn = foodObject["title_en"].string! + ": " + foodObject["text_en"].string!
-            event.scheduleId = Int(foodObject["time_id"].string!)!
+            event.scheduleId = Int(foodObject["time_id"].string!)! + 10000
 
             participant.events.append(event)
         }
@@ -77,6 +77,10 @@ class ParticipantJsonParser {
             event.activityRoomTitleEn = scheduleObject["play_room_name"].string ?? ""
             event.activityRoomTitleDa = scheduleObject["play_room_name"].string ?? ""
             event.eventId = Int(scheduleObject["id"].string ?? "0") ?? 0
+            
+            if event.type == "gds" {
+                event.scheduleId += 1000
+            }
 
             participant.events.append(event)
         }

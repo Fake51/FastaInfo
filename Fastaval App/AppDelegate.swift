@@ -130,6 +130,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let _ = FvForegroundAlert(alertTime: notification.fireDate!, alertText: notification.alertBody!, duration: 10)
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let notification = FvNotification()
+        
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let alert = aps["alert"] as? NSDictionary {
+                if let alertMessage = alert["body"] as? String {
+                    notification.body = alertMessage
+                    notification.title = "Fastaval Notification"
+                    notification.time = Date()
+                }
+            } else if let alert = aps["alert"] as? NSString {
+                notification.body = alert as String
+                notification.title = "Fastaval Notification"
+                notification.time = Date()
+            }
+        }
+        
+        if notification.body.characters.count > 0 {
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(notification)
+            }
+        }
+    }
+
     func registerForPushNotifications(application: UIApplication) {
         
         if #available(iOS 10.0, *){
@@ -142,8 +167,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         return
                     }
                     
-                    if settings.getUseNotifications() {
-                        DispatchQueue.main.async {
+                    DispatchQueue.main.async {
+                        if settings.getUseNotifications() {
                             let _ = settings.setUseNotifications(false)
                         }
                     }
@@ -180,20 +205,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print(token)
+        
+        guard let settings = Directory.sharedInstance.getAppSettings() else {
+            return
+        }
+        
+        settings.deviceId = token
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register:", error)
     }
 
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("wut")
+
+        let body = response.notification.request.content.body
+        
+        if !(body.contains("Fastaval Reminder") || body.contains("Fastaval Påmindelse")) {
+            let realm = try! Realm()
+            try! realm.write {
+                let mine = FvNotification(value: ["title": "Fastaval Notification", "body": body, "time": response.notification.date])
+                realm.add(mine)
+            }
+            
+        }
+
+        
+        let _ = FvForegroundAlert(alertTime: response.notification.date, alertText: response.notification.request.content.body, duration: 10)
     }
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        let body = notification.request.content.body
+        
+        if !(body.contains("Fastaval Reminder") || body.contains("Fastaval Påmindelse")) {
+            let realm = try! Realm()
+            try! realm.write {
+                let mine = FvNotification(value: ["title": "Fastaval Notification", "body": body, "time": notification.date])
+                realm.add(mine)
+            }
+            
+        }
+        
+
         let _ = FvForegroundAlert(alertTime: notification.date, alertText: notification.request.content.body, duration: 10)
     }
 }

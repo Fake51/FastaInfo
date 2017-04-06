@@ -81,7 +81,7 @@ class DetailedEventViewController: UIViewController {
         scrollViewSize.height = textView.bounds.height + author.bounds.height + 10
         scrollView.contentSize = scrollViewSize
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(segueToMap))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map".localized(lang: lang.toString()), style: .plain, target: self, action: #selector(segueToMap))
         
     }
     

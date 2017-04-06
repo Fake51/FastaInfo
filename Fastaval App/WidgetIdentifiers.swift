@@ -9,6 +9,6 @@
 enum WidgetIdentifiers : String {
     case Placeholder = "ContainerPlaceholder"
     case Login = "LoginWidget"
-    case Overview = "OverviewWidget"
+    case Overview = "StoryboardOverviewWidget"
     case News = "NewsWidget"
 }
